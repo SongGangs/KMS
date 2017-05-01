@@ -1,0 +1,86 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#main dl dd strong a:hover {
+    color: #ff0000;
+}
+dd {
+    margin-left: 50px;
+}
+#main {
+    width: 500px;
+    margin: 0 auto;
+}
+.filed {
+    width: 100px;
+    float: left;
+    margin-left: 20px;
+}
+.txt {
+    width: 200px;
+    margin-left: 30px;
+    float: left;
+}
+.txt>input {
+    width: 100%;
+}
+.contain {
+    width: 100%;
+    height: 30px;
+}
+#familymembers {
+    margin-left: 30px;
+    width: 300px;
+}
+#imgcontain {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 100px;
+    height: 165px;
+}
+.imageDisplay {
+    width: 100px;
+    height: 140px;
+}
+.imageDisplay img {
+    width: 100px;
+    height: 140px;
+}
+.imageChange {
+    width: 100px;
+    height: 23px;
+    margin-top: 2px;
+}
+
+.imageChange input {
+    width: 50px;
+    margin: 0 auto;
+    margin-right: 25px;
+    display: block;
+}
+.useraddresstxt {
+    width: 300px;
+    margin-left: 30px;
+    float: left;
+}
+.useraddress {
+    width: 200px;
+}
+.delectaddress {
+    width: 45px;
+    margin-left: 5px;
+}
+.addaddress{
+	width: 45px;
+    margin-left: 5px;
+}
+#familymembers table {
+    margin: 0 auto;
+}
+tr {
+    height: 30px;
+    border-bottom: 1px solid #000000;
+}

@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+*{
+	padding: 0px;
+	margin: 0px;
+}
+#footer{
+	height: 90px;
+    clear: left;
+    margin-top: 20px;
+}
+#footer p{
+	height: 30px;
+	font-family: fantasy;
+	line-height: 30px;
+	text-align: center;
+}
