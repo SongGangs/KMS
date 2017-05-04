@@ -24,7 +24,7 @@
 				href="/KMS/Account/Register">Register</a> if you don't have an
 			account.
 		</p>
-		<form name='longin_f' action='/OurMarkets/j_spring_security_check' method='POST'>
+		<form name='longin_f' action='/KMS/j_spring_security_check' method='POST'>
 			<div>
 				<fieldset>
 					<legend>Account Information</legend>

@@ -8,8 +8,8 @@
           http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 <!-- 配置相关资源的访问权限 -->
 	<security:http auto-config="true"  use-expressions="true">
-		<!-- 配置相关地址的访问权限 -->
-		<security:intercept-url pattern="/Account/UserInfoCenter"
+		<!-- 配置相关地址的访问权限 --><!--Account/UserInfoCenter-->
+		<security:intercept-url pattern="/Account/UserInfoCenter*"
 			access="hasRole('ROLE_USER')" />
 		<!-- 配置登录页面和登录成功页面 如果不配置将会使用Spring Security自带的页面 -->
 		<security:form-login login-page="/Account/Login"

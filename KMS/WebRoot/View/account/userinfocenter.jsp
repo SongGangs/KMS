@@ -17,18 +17,19 @@
 <script src="/KMS/JS/CommonJS.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(".delectaddress").click(function() {
-
+	$(document).on('click', '.delectaddress', function() {
+			var _this = $(this);
 			var _Addressid = $(this).data("id");
 			if (typeof (_Addressid) != "undefined") {
-				$.post("/KMS/Account/RemoveAddress",
+				$.post("/KMS/API/Account/RemoveAddress",
 					{
 						id : _Addressid
 					}, function(data) {
-						if (data == "success") {
-							$(this).siblings(".useraddress").remove();
-							$(this).siblings(".addaddress").remove();
-							$(this).remove();
+						if (data.msg == "success") {
+							_this.prev().remove();
+							_this.remove();
+						} else if (data.msg == "error") {
+							alert("error");
 						}
 					});
 			}
@@ -36,23 +37,29 @@
 		$("#addaddress").click(function() {
 			var txt = $(this).prev().val();
 			var userid = $(this).data("id");
+			var _this = $(this);
 			if (txt != "") {
-				$.post("/KMS/Account/AddAddress",
+				$.post("/KMS/API/Account/AddAddress",
 					{
 						addressTxt : txt,
 						userid : userid
 					}, function(data) {
-						if (data != "") {
-							var id = data.split("^")[0];
-							var address = data.split("^")[1];
+						if (data.msg == "success") {
+							var id = data.id;
+							var address = data.name;
 							var html = "<input type='text' class='useraddress' name='useraddress' value='{address}' />" +
-								"<a href='#'  class='addaddress'>添加</a><a href='#' data-id='{id}'class='delectaddress'>删除</a>"
+								"<a href='#' data-id='{id}' class='delectaddress'>删除</a>"
 							var result = html.format({
 								address : address,
 								id : id
 							});
-							$(this).prev().before(result);
+							
+							_this.prev().val("");
+							_this.prev().before(result);
+						} else if (data.msg == "error") {
+							alert("error");
 						}
+
 					});
 			}
 		})
@@ -134,7 +141,6 @@
 				<c:forEach items="${viewmodel.getAddressinfos()}" var="item">
 					<input type="text" class="useraddress" name="useraddress"
 						value="${item.getAddressName()}" />
-					<!-- 					<a href="#"  class="addaddress">添加</a> -->
 					<a href="#" data-id="${item.getAddressRecId()}"
 						class="delectaddress">删除</a>
 				</c:forEach>
