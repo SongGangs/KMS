@@ -24,18 +24,18 @@
 				href="/KMS/Account/Register">Register</a> if you don't have an
 			account.
 		</p>
-		<form name='longin_f' action='/KMS/Account/Login' method='POST'>
+		<form name='longin_f' action='/OurMarkets/j_spring_security_check' method='POST'>
 			<div>
 				<fieldset>
 					<legend>Account Information</legend>
 					<div class="label">UserName:</div>
 					<div class="txt">
-						<input type='text' name='username' value='' />
+						<input type='text' name="j_username" value='' />
 					</div>
 
 					<div class="label">Password:</div>
 					<div class="txt">
-						<input type='password' name='password' />
+						<input type='password' name='j_password' />
 					</div>
 					<p>
 						<input name="submit" type="submit" value="Login" />

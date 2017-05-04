@@ -6,11 +6,9 @@ package pers.sg.kms.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import pers.sg.kms.model.Addressinfo;
@@ -51,18 +49,6 @@ public class AccountController {
 		return "account/register";
 	}
 
-	@RequestMapping(value = "/Login", method = RequestMethod.POST)
-	public String log0n(@RequestParam("username") String userName, @RequestParam("password") String pwd) {
-		if (userInfoService.loginInfoCheck(userName, pwd)) {
-			System.out.println("登陆成功");
-			return "account/login";
-		} else {
-			System.out.println("登陆失败");
-			return "redirect:Login";// 重定向只改变最后的页面值
-		}
-
-	}
-
 	@RequestMapping(value = "/Register", method = RequestMethod.POST)
 	public ModelAndView registers() {
 
@@ -82,26 +68,4 @@ public class AccountController {
 		return new ModelAndView("account/userinfocenter", "viewmodel", ucvm);
 	}
 
-	@RequestMapping(value = "/RemoveAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String RemoveAddress(long id) {
-		Addressinfo addressinfo = addressInfoService.delectAdressByAddressID(id);
-		if (addressinfo.getAddressRecId() > 0) {
-			return "success";
-		} else {
-			return "failed";
-		}
-	}
-
-	@RequestMapping(value = "/AddAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String AddAddress(String addressTxt, long userid) {
-		Addressinfo addressinfo = new Addressinfo();
-		addressinfo.setUserinfo(userInfoService.getUserinfoByUserRecID(userid));
-		addressinfo.setAddressName(addressTxt);
-		Addressinfo a = addressInfoService.insertAdressByAddressinfo(addressinfo);
-		if (a.getAddressRecId() > 0) {
-			return a.getAddressRecId() + "^" + a.getAddressName();
-		} else {
-			return "";
-		}
-	}
 }
