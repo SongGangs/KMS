@@ -72,6 +72,7 @@ public class DynamicAjaxController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (publishdynamic.getPublishDynamicId() != 0) {
 			map.put("msg", "success");
+			map.put("dynamicid", dynamic.getDynamicId());
 		} else {
 			map.put("msg", "error");
 		}
@@ -90,7 +91,7 @@ public class DynamicAjaxController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/AddComment", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, Object> AddComment(String username_me, String username_you, String message, Long dynamicID,
+	public Map<String, Object> AddComment(String username_me, String username_you, String message, long dynamicID,
 			long publishCommentID) {
 		Dynamicinfo dynamicinfo = dynamicServices.getDynamicByDynamicId(dynamicID);
 		Date nowDate = new Date();

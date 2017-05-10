@@ -99,7 +99,7 @@ $(function() {
 					"<div class='center-item-commentitem-main-userinfo-detail'><div class='center-item-commentitem-main-userinfo-detail-message'>" +
 					"<span class='center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-me'>{name_me}</span>" +
 					"<span>：</span>{message}</div><p class='center-item-commentitem-main-userinfo-detail-time'><span>{time}</span>" +
-					"<a class='center-item-commentitem-comment'><img src='/KMS/resources/comment.png' /></a></p></div></div></div>";
+					"<a class='center-item-commentitem-comment' data-id='"+_publishCommentid+"'><img src='/KMS/resources/comment.png' /></a></p></div></div></div>";
 				var result = htmls.format({
 					imgsrc : _imgsrc,
 					name_me : _username_me,
@@ -116,7 +116,7 @@ $(function() {
 					"<span class='center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-me'>{name_me}</span>" +
 					"对<span class='center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-you'>{name_you}</span>" +
 					"<span>说：</span>{message}</div><p class='center-item-commentitem-main-userinfo-detail-time'>" +
-					"<span>{time}</span><a class='center-item-commentitem-comment'>" +
+					"<span>{time}</span><a class='center-item-commentitem-comment' data-id='"+_publishCommentid+"'>" +
 					"<img src='/KMS/resources/comment.png' /></a></p></div></div>";
 				var result = htmls.format({
 					imgsrc : _imgsrc,
@@ -167,15 +167,8 @@ $(function() {
 				"<ul><li class='center-item-ico-comment'><a href='javascript:;'><img src='/KMS/resources/comment.png'/></a></li>" +
 				"<li class='center-item-ico-like'><a href='javascript:;'><img src='/KMS/resources/like.png'/></a></li></ul></div><hr/>" +
 				"<div class='center-item-commentlist'></div><div class='center-item-txt'><textarea placeholder='评论'></textarea>" +
-				"</div><div class='center-item-btn'><a href='javascript:;'>评论</a></div></div><div class='center-stop'></div>";
-			var result = htmls.format({
-				imgsrc : _imgsrc,
-				name : _username,
-				date : new Date().Format("yyyy-MM-dd hh:mm:ss"),
-				message : txt,
-				nums : 5
-			});
-			
+				"</div><div class='center-item-btn'><a href='javascript:;' data-dynamicid='{dynamicid}'>评论</a></div></div><div class='center-stop'></div>";
+		
 			$(this).parent().siblings("#top-txt").children().val("");
 
 			//用Ajax向后台发送请求
@@ -184,6 +177,14 @@ $(function() {
 				message : txt
 			}, function(data) {
 				if(data.msg=="success"){
+					var result = htmls.format({
+						imgsrc : _imgsrc,
+						name : _username,
+						date : new Date().Format("yyyy-MM-dd hh:mm:ss"),
+						message : txt,
+						nums : 5,
+						dynamicid : data.dynamicid
+					});
 					item.append(result);//当加入数据库成功时 再将动态展示
 				}else{
 					alert(data.msg);
