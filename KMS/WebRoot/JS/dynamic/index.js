@@ -90,6 +90,8 @@ $(function() {
 		commentFlag.dynamicid=$(this).data("dynamicid");
 		var _dynamicID= commentFlag.dynamicid;
 		var _publishCommentid=commentFlag.publishCommentId;
+		
+		var item;//最后加载评论的位置区域
 		if (txt != "") {
 			if (commentFlag.level == "me") {
 				var htmls = "<div class='center-item-commentitem'><div class='center-item-commentitem-main'>" +
@@ -104,7 +106,7 @@ $(function() {
 					message : txt,
 					time : new Date().Format("yyyy-MM-dd hh:mm:ss")
 				});
-				$(this).parent().siblings(".center-item-commentlist").append(result);
+				item=$(this).parent().siblings(".center-item-commentlist:last");
 			//commentFlag.here.append(result);
 			} else if (commentFlag.level == "you") {
 				var htmls = "<div class='center-item-commentitem-nomain'>" +
@@ -123,18 +125,22 @@ $(function() {
 					message : txt,
 					time : new Date().Format("yyyy-MM-dd hh:mm:ss")
 				});
-				commentFlag.here.append(result);
+				item=commentFlag.here;
 			}
 			$(this).parent().siblings(".center-item-txt").children().val("");
 			//用Ajax向后台发送请求
-			$.post("/KMS/Dynamic/AddComment", {
+			$.post("/KMS/API/Dynamic/AddComment", {
 				username_me : _username_me,
 				username_you:_username_you,
 				message : txt,
 				dynamicID:_dynamicID,
 				publishCommentID:_publishCommentid
 			}, function(data) {
-				alert(data);
+				if(data.msg=="success"){
+					item.append(result);//当加入数据库成功时 再将动态展示
+				}else{
+					alert(data.msg);
+				}
 			});
 		}
 		commentFlag.level = "me";
@@ -169,15 +175,19 @@ $(function() {
 				message : txt,
 				nums : 5
 			});
-			item.append(result);
+			
 			$(this).parent().siblings("#top-txt").children().val("");
 
 			//用Ajax向后台发送请求
-			$.post("/KMS/Dynamic/AddDynamic", {
+			$.post("/KMS/API/Dynamic/AddDynamic", {
 				username : _username,
 				message : txt
 			}, function(data) {
-				alert(data);
+				if(data.msg=="success"){
+					item.append(result);//当加入数据库成功时 再将动态展示
+				}else{
+					alert(data.msg);
+				}
 			});
 		}
 	});

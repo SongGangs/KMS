@@ -19,7 +19,7 @@ import pers.sg.kms.services.IUserInfoService;
 
 /**
  * @Title:AddressAjaxController
- * @Description:
+ * @Description: 这里是利用AJAX请求带上Spring MVC框架的异步请求
  * @Personal
  * @author : SGang
  * @date : 2017年3月21日
