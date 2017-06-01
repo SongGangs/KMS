@@ -105,7 +105,7 @@
 				<li class="active">首页</li>
 			</ul>
 			<div class="col-sm-12">
-				<div id="main">
+				<div id="main" class="row">
 					<dl>
 						<dt>下面是个人信息展示</dt>
 						<dd>
@@ -218,6 +218,6 @@
 	<a href="#"> <img class="forkme"
 		src="/KMS/resources/forkme.png" alt="Fork me on GitHub">
 	</a>
-	<%@ include file="../footer.jsp"%>
+<%-- 	<%@ include file="../footer.jsp"%> --%>
 </body>
 </html>

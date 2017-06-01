@@ -4,13 +4,16 @@
 	margin: 0px;
 }
 #footer{
-	height: 90px;
-    clear: left;
-    margin-top: 20px;
+    clear: both;
+    margin-
 }
 #footer p{
-	height: 30px;
+	height: 25px;
 	font-family: fantasy;
-	line-height: 30px;
+	line-height: 25px;
 	text-align: center;
+	
+}
+p{
+	margin:0px;
 }
