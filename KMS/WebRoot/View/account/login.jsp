@@ -15,8 +15,6 @@
 </head>
 
 <body>
-	<%@ include file="../header.jsp"%>
-
 	<div id="main">
 		<h2>登陆</h2>
 		<p>

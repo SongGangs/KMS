@@ -17,8 +17,6 @@
 </head>
 
 <body>
-	<%@ include file="../header.jsp"%>
-	<%@ include file="../header_second.jsp"%>
 	<div id="main">
 	<div class="pros">
 		<div class="pro">

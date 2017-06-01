@@ -16,7 +16,6 @@
   </head>
   
   <body>
-   <%@ include file="../header.jsp"%>
     <div id="main">
 		<h2>Create a New Account</h2>
 		<p>Use the form below to create a new account. </p>

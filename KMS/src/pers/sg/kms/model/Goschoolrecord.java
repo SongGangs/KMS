@@ -14,6 +14,8 @@ public class Goschoolrecord implements java.io.Serializable {
 	private Childinfo childinfo;
 	private Goschoolstate goschoolstate;
 	private Date recordTime;
+	private Date inTime;
+	private Date outTime;
 
 	// Constructors
 
@@ -22,10 +24,13 @@ public class Goschoolrecord implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Goschoolrecord(Childinfo childinfo, Goschoolstate goschoolstate, Date recordTime) {
+	public Goschoolrecord(Childinfo childinfo, Goschoolstate goschoolstate, Date recordTime, Date inTime,
+			Date outTime) {
 		this.childinfo = childinfo;
 		this.goschoolstate = goschoolstate;
 		this.recordTime = recordTime;
+		this.inTime = inTime;
+		this.outTime = outTime;
 	}
 
 	// Property accessors
@@ -60,6 +65,22 @@ public class Goschoolrecord implements java.io.Serializable {
 
 	public void setRecordTime(Date recordTime) {
 		this.recordTime = recordTime;
+	}
+
+	public Date getInTime() {
+		return this.inTime;
+	}
+
+	public void setInTime(Date inTime) {
+		this.inTime = inTime;
+	}
+
+	public Date getOutTime() {
+		return this.outTime;
+	}
+
+	public void setOutTime(Date outTime) {
+		this.outTime = outTime;
 	}
 
 }
