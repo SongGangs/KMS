@@ -1,14 +1,19 @@
 #querySecurityCodeBtn{float:right;}
 
+
 @media(max-width:1025px) {
-	 #register_identifyCode{width:79%;}
+	 #register_identifyCode{width:79%!important;}
+	
 }
 @media(max-width:768px) {
 	 #register_identifyCode{width:63%;}
+
 }
 @media(max-width:330px){
 	 #register_identifyCode{width:57%;}
+	
 }
 @media(min-width:1025px) {
    #register_identifyCode{width:85%;}
+  
 }

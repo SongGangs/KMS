@@ -5,13 +5,15 @@
 }
 #footer{
     clear: both;
-    position:absolute;
+    position:relative;
+  //position:absolute;
     bottom:0px;
-    left:50%;
+   // left:50%;
 }
+/*
 #footer >div{
     margin-left:-100%;
-}
+}*/
 #footer p{
 	height: 25px;
 	font-family: fantasy;

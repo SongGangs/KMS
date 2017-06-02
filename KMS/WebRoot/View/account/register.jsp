@@ -14,8 +14,8 @@
 但是JS文件应该放在最下面 important -->
 <!--登陆注册通用的基本样式-->
 <link href="/KMS/CSS/account/account.css" rel="stylesheet" type="text/css" />
-<!--注册的基本样式-->
-<link href="/KMS/CSS/account/register.css" rel="stylesheet" type="text/css" />
+<!--并列一行的基本样式-->
+<link href="/KMS/CSS/common/inline.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
