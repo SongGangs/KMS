@@ -1,4 +1,4 @@
-ï»¿html, body { background: #f9f9f9; -ms-overflow-style: scrollbar; /*ie-scrollbar*/ }
+html, body { background: #f9f9f9; -ms-overflow-style: scrollbar; /*ie-scrollbar*/ }
 
 @media(max-width:768px) {
     html, body { overflow-x: hidden; /* Prevent scroll on narrow devices */ }
@@ -19,7 +19,7 @@
 .sidebar .sub-menu li a { padding: 15px 30px; text-decoration: none; display: block; background-color: #fff; }
 .sidebar .sub-menu li[class*=active] > a { color: #00acac !important; }
 
-.maincontent { width: 100%; height: 100%; margin: 0 auto; min-width: 320px !important; overflow: hidden; }
+.maincontent { width: 100%;  margin: 0 auto; min-width: 320px !important; overflow: hidden; }
 .maincontent .breadcrumb { padding: 14px 15px; }
 
 #goTop { padding: 5px 15px; border-radius: 8px; position: fixed; right: 20px; bottom: 20px; display: none; background-color: #aaa; color: #fff; text-align: center; display: none; -moz-transition: background 0.5s linear; -webkit-transition: background 0.5s linear; -o-transition: background 0.5s linear; transition: background 0.5s linear; z-index: 99; }
@@ -31,5 +31,5 @@
 }
 
 .forkme { position: absolute; top: 50px; right: 0; border: 0; }
-/*faå­—ä½“åº“æ ·å¼çº æ­£ï¼Œæ³¨æ„å†™æ³•ï¼Œä¸­é—´æ˜¯æ²¡æœ‰é—´éš”çš„*/
+/*fa×ÖÌå¿âÑùÊ½¾ÀÕı£¬×¢ÒâĞ´·¨£¬ÖĞ¼äÊÇÃ»ÓĞ¼ä¸ôµÄ*/
 .fa.pull-right { line-height: inherit; }

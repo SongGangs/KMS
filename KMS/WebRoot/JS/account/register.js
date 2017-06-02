@@ -8,6 +8,7 @@ $(function() {
 	      * 你只需传入相应的键值对
 	      * 
 	      */
+	
 	//这里使用bootstrapValidator
 		var validator_register = $("#register-from").bootstrapValidator({
 			message : 'This value is not valid',
