@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -11,6 +12,8 @@
 <!--bootstrap库-->
 <link href="/KMS/CSS/bootstrap.min.css" rel="stylesheet" />
 <script src="/KMS/JS/bootstrap/bootstrap.min.js"></script>
+<!--angularJS库-->
+<script src="/KMS/JS/angular.min.js"></script>
 <!--[if lt IE 9]>
       <script src="js/bootstrap/html5shiv.min.js"></script>
       <script src="js/bootstrap/respond.min.js"></script>
@@ -58,17 +61,35 @@
 					target="_blank"><i class="fa fa-download fa-fw"></i>&nbsp;原码下载</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-expanded="false"><i
-						class="fa fa-user fa-fw"></i>&nbsp;小王&nbsp;<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="JavaScript:;">top-right1.html</a></li>
-						<li class="divider"></li>
-						<li><a href="JavaScript:;">top-right2.html</a></li>
-						<li class="divider"></li>
-						<li><a href="JavaScript:;"><i
-								class="fa fa-sign-out fa-fw"></i>&nbsp;top-right3.html</a></li>
-					</ul></li>
+				<!-- 不具有 Admin,User的权限则显示登录链接-->
+				<security:authorize ifNotGranted="ROLE_USER,ROLE_ADMIN">
+				<li><a href="/KMS/Account/Login" ><i class="fa fa-user fa-fw"></i>&nbsp;Log In</a></li>
+				</security:authorize>
+				<!-- 如果已经授权则显示退出链接 -->
+				<security:authorize access="isAuthenticated()">
+					<li ng-app="myApp" ng-controller="userCtrl" class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-expanded="false" ><i
+							class="fa fa-user fa-fw"></i>&nbsp;<span id='username'><security:authentication property="principal.username"></security:authentication></span>&nbsp;<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href='{{href}}'>个人中心</a></li>
+							<li class="divider"></li>
+							<li><a href="/KMS/Account/LogOut"><i
+									class="fa fa-sign-out fa-fw"></i>&nbsp;Log Out</a></li>
+						</ul></li>
+					<script>
+						var app= angular.module('myApp', []);
+						app.controller('userCtrl', function($scope, $http) {
+							$http({
+								method : 'GET',
+								url : 'http://localhost/SG/queryIdFormName.php?name=' + $('#username').text()
+							}).then(function successCallback(response) {
+								$scope.href = '/KMS/Account/UserInfoCenter?UserRecID=' + response.data.userinfo[0].UserRecID;
+							}, function errorCallback(response) {
+								$scope.href = 'JavaScript:;';
+							});
+						});
+					</script>
+				</security:authorize>
 			</ul>
 		</div>
 	</div>

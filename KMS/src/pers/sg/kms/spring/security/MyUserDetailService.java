@@ -19,12 +19,12 @@ import pers.sg.kms.model.Userinfo;
 import pers.sg.kms.services.IUserInfoService;
 
 /**
- * Title:CustomUserDetailsService
- *
- * Description:
  * 
- * @author SGang
- * @date 2017骞?5鏈?2鏃ヤ笅鍗?5:14:43
+ * @Title:MyUserDetailService
+ * @Description:
+ * @Personal
+ * @author : SGang
+ * @date : 2017年6月2日下午3:26:08
  */
 public class MyUserDetailService implements UserDetailsService {
 

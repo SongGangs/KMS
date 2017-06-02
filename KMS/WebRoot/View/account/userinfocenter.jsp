@@ -32,7 +32,7 @@
 
 					<fieldset>
 						<legend>User Information Center</legend>
-
+						
 						<div id="imgcontain">
 							<div class="imageDisplay">
 								<img alt="用户头像" src="${viewmodel.getUserinfo().getImage()}" />
@@ -41,90 +41,84 @@
 								<input type="button" value="更换" />
 							</div>
 						</div>
-						<div class="contain">
-							<div class="filed">
-								<label for="username">用户名称：</label>
-							</div>
-							<div class="txt">
-								<input type="text" id="username" name="username"
-									value="${viewmodel.getUserinfo().getUserName()}" />
-							</div>
-						</div>
-						<div class="contain">
-							<div class="filed">
-								<label for="gender">用户性别：</label>
-							</div>
-							<div class="txt">
-								<input type="text" id="gender" name="gender"
-									value="<c:if test="${viewmodel.getUserinfo().getGender()=='1'}">女</c:if><c:if test="${viewmodel.getUserinfo().getGender()=='0'}">男</c:if>" />
+						<div class="form-group">
+							<label class="col-sm-2 control-label">用户昵称</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="username"
+									name="username"
+									value="${viewmodel.getUserinfo().getUserName()}" disabled>
 							</div>
 						</div>
-
-						<div class="contain">
-							<div class="filed">
-								<label for="registerTime">注册时间：</label>
-							</div>
-							<div class="txt">
-								<input type="text" id="registerTime" name="registerTime"
-									value="${viewmodel.getUserinfo().getRegisterTime()}" />
+						<div class="form-group">
+							<label for="gender" class="col-sm-2 control-label">用户性别</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="gender"
+									name="gender"
+									value="<c:if test="${viewmodel.getUserinfo().getGender()=='1'}">女</c:if><c:if test="${viewmodel.getUserinfo().getGender()=='0'}">男</c:if>" >
 							</div>
 						</div>
-						<div class="contain">
-							<div class="filed">
-								<label for="phoneNumber">联系方式：</label>
-							</div>
-							<div class="txt">
-								<input type="text" id="phoneNumber" name="phoneNumber"
-									value="${viewmodel.getUserinfo().getPhoneNumber()}" />
-							</div>
-						</div>
-						<div class="contain">
-							<div class="filed">
-								<label for="usercatalogname">用户种类：</label>
-							</div>
-							<div class="txt">
-								<input type="text" id="usercatalogname" name="usercatalogname"
-									value="${viewmodel.getUserinfo().getUsercatalog().getUserCatalogName()}" />
+						<div class="form-group">
+							<label class="col-sm-2 control-label">注册时间</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="registerTime"
+									name="registerTime"
+									value="${viewmodel.getUserinfo().getRegisterTime()}" disabled>
 							</div>
 						</div>
-						<div class="filed">
-							<label for="useraddress">用户地址：</label>
+						<div class="form-group">
+							<label for="phoneNumber" class="col-sm-2 control-label">联系方式</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="phoneNumber" name="phoneNumber"
+									value="${viewmodel.getUserinfo().getPhoneNumber()}" >
+							</div>
 						</div>
-						<div class="useraddresstxt">
+						<div class="form-group">
+							<label for="usercatalogname" class="col-sm-2 control-label">用户身份</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="usercatalogname" name="usercatalogname"
+									value="${viewmodel.getUserinfo().getUsercatalog().getUserCatalogName()}" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label  class="col-sm-2 control-label">用户地址：</label>
+							<div class="col-sm-10">
 							<c:forEach items="${viewmodel.getAddressinfos()}" var="item">
-								<input type="text" class="useraddress" name="useraddress"
+							<div class="form-inline"> 
+								<input type="text" class="form-control" name="useraddress"
 									value="${item.getAddressName()}" />
 								<a href="#" data-id="${item.getAddressRecId()}"
 									class="delectaddress">删除</a>
+									</div>
 							</c:forEach>
-							<input type="text" class="useraddress" name="useraddress"
+							<div class="form-inline"> 
+							<input type="text" class="form-control" name="useraddress"
 								value="${item.getAddressName()}" /> <a href="#" id="addaddress"
 								data-id="${viewmodel.getUserinfo().getUserRecId()}"
 								class="addaddress">添加</a>
+								</div>
+							</div>
 						</div>
-						<div id="familymembers">
-							<fieldset>
-								<legend>家庭成员</legend>
-								<table>
-									<tr>
-										<th>家庭识别码</th>
-										<th>家庭名称</th>
-										<th>家庭身份</th>
-										<th>姓名</th>
-										<th></th>
-										<th></th>
+						
+						<table  class="table">
+							<thead>
+								<tr>
+									<th>家庭识别码</th>
+									<th>家庭名称</th>
+									<th>家庭身份</th>
+									<th>姓名</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${viewmodel.getUserinfolist()}" var="item">
+									<tr style="{{$even?'background-color: #f1f1f1':''}}">
+										<td>${viewmodel.getUserinfo().getFamily().getFamilyId()}</td>
+										<td>${viewmodel.getUserinfo().getFamily().getFamilyName()}</td>
+										<td>${item.getIdentity()}</td>
+										<td>${item.getUserName()}</td>
 									</tr>
-									<c:forEach items="${viewmodel.getUserinfolist()}" var="item">
-										<tr>
-											<td>${viewmodel.getUserinfo().getFamily().getFamilyId()}</td>
-											<td>${viewmodel.getUserinfo().getFamily().getFamilyName()}</td>
-											<td>${item.getIdentity()}</td>
-											<td>${item.getUserName()}</td>
-										</tr>
-									</c:forEach>
-								</table>
-							</fieldset>
-						</div>
+								</c:forEach>
+							</tbody>
+						</table>
 					</fieldset>
 				</div>
 			</div>
