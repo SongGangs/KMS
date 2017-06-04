@@ -48,6 +48,8 @@
 <!--主要写的login、register代码 -->
 <script src="/KMS/JS/account/login.js" type="text/javascript"></script>
 <script src="/KMS/JS/account/register.js" type="text/javascript"></script>
+<!--并列一行的基本样式-->
+<link href="/KMS/CSS/common/inline.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
