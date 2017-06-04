@@ -8,7 +8,7 @@ $(function() {
 		var _this = $(this);
 		var _Addressid = $(this).data("id");
 		if (typeof (_Addressid) != "undefined") {
-			$.post("/KMS/API/Account/RemoveAddress",
+			$.post("/KMS/API/Address/RemoveAddress",
 				{
 					id : _Addressid
 				}, function(data) {
@@ -26,7 +26,7 @@ $(function() {
 		var userid = $(this).data("id");
 		var _this = $(this);
 		if (txt != "") {
-			$.post("/KMS/API/Account/AddAddress",
+			$.post("/KMS/API/Address/AddAddress",
 				{
 					addressTxt : txt,
 					userid : userid

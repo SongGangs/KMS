@@ -12,6 +12,9 @@
 <!--bootstrap库-->
 <link href="/KMS/CSS/bootstrap.min.css" rel="stylesheet" />
 <script src="/KMS/JS/bootstrap/bootstrap.min.js"></script>
+<!--layer库-->
+<link href="/KMS/CSS/layer/skin/default/layer.css" rel="stylesheet" />
+<script src="/KMS/CSS/layer/layer.js"></script>
 <!--angularJS库-->
 <script src="/KMS/JS/angular.min.js"></script>
 <!--[if lt IE 9]>

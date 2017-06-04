@@ -40,35 +40,6 @@ public class UserInfoServiceImp implements IUserInfoService {
 	}
 
 	@Override
-	public boolean delectUserinfoByUserRecID(long UserRecID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean insertUserinfoByUserRecID(long UserRecID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updateUserinfoByUserRecID(long UserRecID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean loginInfoCheck(String userName, String pwd) {
-		// return userinfoDAO.findByUserNameAndPassword(userName, pwd);
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see pers.sg.kms.services.IUserInfoService#getUserIdByDynamicId(long)
-	 */
-	@Override
 	public long getUserIdByDynamicId(long id) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -83,6 +54,72 @@ public class UserInfoServiceImp implements IUserInfoService {
 		} else {
 			return new Userinfo();
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * pers.sg.kms.services.IUserInfoService#checkuNickNameIsExist(java.lang.
+	 * String) 检查用户名是否存在
+	 */
+	@Override
+	public boolean checkuNickNameIsExist(String userName) {
+		int result = userinfoDAO.findByUserName(userName).size();
+		if (result > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * pers.sg.kms.services.IUserInfoService#addUser(pers.sg.kms.model.Userinfo)
+	 * 添加用户
+	 */
+	@Override
+	public Userinfo addUser(Userinfo userinfo) {
+		if (!checkuNickNameIsExist(userinfo.getUserName())) {
+			return userinfoDAO.save(userinfo);
+		} else {
+			return null;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * pers.sg.kms.services.IUserInfoService#identifyLoginInfo(java.lang.String,
+	 * java.lang.String) 检查账号信息是个正确
+	 */
+	@Override
+	public Userinfo identifyLoginInfo(String userName, String password) {
+		if (checkuNickNameIsExist(userName)) {
+			Userinfo user = (Userinfo) userinfoDAO.findByUserName(userName).get(0);
+			if (user.getPassword().equals(password)) {
+				return user;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * pers.sg.kms.services.IUserInfoService#updateUserinfoByUserRecID(long)
+	 */
+	@Override
+	public boolean updateUserinfoByUserRecID(long UserRecID) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

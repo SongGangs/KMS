@@ -18,4 +18,6 @@ public interface IUserCatalogService {
 	public String findUserCatalogByUserID(int userID);
 
 	public List<Usercatalog> findAllUsercatalog();
+
+	public Usercatalog findbyid(Short id);
 }

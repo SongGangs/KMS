@@ -25,7 +25,7 @@ import pers.sg.kms.services.IUserInfoService;
  * @date : 2017年3月21日
  */
 @Controller
-@RequestMapping("/Account")
+@RequestMapping("/Address")
 public class AddressAjaxController {
 	@Autowired
 	private IAddressInfoService addressInfoService = null;// 自动装配一个空的用户

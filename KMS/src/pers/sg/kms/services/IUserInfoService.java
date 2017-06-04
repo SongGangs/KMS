@@ -22,13 +22,13 @@ public interface IUserInfoService {
 
 	public Userinfo getUserinfoByUserName(String username);
 
-	public boolean delectUserinfoByUserRecID(long UserRecID);
-
-	public boolean insertUserinfoByUserRecID(long UserRecID);
-
 	public boolean updateUserinfoByUserRecID(long UserRecID);
 
-	public boolean loginInfoCheck(String userName, String pwd);
-
 	public long getUserIdByDynamicId(long id);
+
+	public boolean checkuNickNameIsExist(String userName);
+
+	public Userinfo addUser(Userinfo userinfo);
+
+	public Userinfo identifyLoginInfo(String userName, String password);
 }

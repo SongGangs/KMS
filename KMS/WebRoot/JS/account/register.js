@@ -98,7 +98,7 @@ $(function() {
 						},
 						threshold : 5,
 						remote : {
-							url : '/OurMarkets/API/Account/CheckSecurityCode', //验证地址
+							url : '/KMS/API/Message/CheckSecurityCode', //验证地址
 							message : '短信验证码不正确', //提示消息
 							delay : 2000, //每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
 							type : 'POST', //请求方式
@@ -152,7 +152,7 @@ $(function() {
 
 
 		$("#querySecurityCodeBtn").on("click", function() {
-			$.post("/OurMarkets/API/Account/SendSecurityCode", {
+			$.post("/KMS/API/Message/SendSecurityCode", {
 				phoneNumber : $("#register_phone").val()
 			}, function(data) {
 				if (data.msg == "success") {
@@ -173,11 +173,13 @@ $(function() {
 		$("#registerBtn").on("click", function() {
 			if ($("#register-from").valid()) {
 				//如果验证成功
-				$.post("/OurMarkets/API/Account/Register",
+				$.post("/KMS/API/Account/AddUser",
 					{
-						uNickName : $.trim($("#register_username").val()),
-						uPassword : $("#register_password").val(),
-						uPhone : $("#register_phone").val()
+					userName : $.trim($("#register_username").val()),
+					password : $("#register_password").val(),
+					phoneNumber : $("#register_phone").val(),
+					usercatalogID : 1,
+					familyID : 1
 					},
 					function(data) {
 						if (data.msg == "success") {

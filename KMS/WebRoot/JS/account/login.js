@@ -11,6 +11,7 @@ $(function() {
 	$("#showLoginLayerBtn").on("click", function() {
 		showLoginLayer();
 	});
+	AutoFillCookie(); //查看Cookie记录里面是否有保存信息 有就自动填充
 	//登陆表单
 	//让当前表单调用validate方法，实现表单验证功能
 	//这里使用jQuery .validate
@@ -52,16 +53,14 @@ $(function() {
 				validator_login.resetForm(); //重置表单
 			}
 		});
-		AutoFillCookie(); //查看Cookie记录里面是否有保存信息 有就自动填充
 	}
 	$("#loginBtn").on("click", function() {
-		$("#login-from").submit();
-		/*if ($("#login-from").valid()) {
+		if ($("#login-from").valid()) {
 			//如果验证成功
-			$.post("/KMS/API/Account/Login"
+			$.post("/KMS/API/Account/Identify"
 				, {
-					uNickName : $.trim($("#login_username").val()),
-					uPassword : $('#login_password').val()
+					userName : $.trim($("#login_username").val()),
+					password : $('#login_password').val()
 				}
 				, function(data) {
 					if (data.msg == "success") {
@@ -84,7 +83,7 @@ $(function() {
 						});
 					}
 				});
-		}*/
+		}
 	});
 
 	//初始化页面时验证是否记住了密码 
