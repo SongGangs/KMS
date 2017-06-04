@@ -8,6 +8,9 @@ $(function() {
 	      * 你只需传入相应的键值对
 	      * 
 	      */
+	$("#showLoginLayerBtn").on("click", function() {
+		showLoginLayer();
+	});
 	//登陆表单
 	//让当前表单调用validate方法，实现表单验证功能
 	//这里使用jQuery .validate
@@ -33,7 +36,7 @@ $(function() {
 			}
 		}
 	});
-	$(".a_login").on("click", function() {
+	function showLoginLayer() {
 		layer.closeAll('page');
 		layer.open({
 			type : 1, //此处以iframe举例
@@ -50,7 +53,7 @@ $(function() {
 			}
 		});
 		AutoFillCookie(); //查看Cookie记录里面是否有保存信息 有就自动填充
-	});
+	}
 	$("#loginBtn").on("click", function() {
 		$("#login-from").submit();
 		/*if ($("#login-from").valid()) {

@@ -8,7 +8,9 @@ $(function() {
 	      * 你只需传入相应的键值对
 	      * 
 	      */
-	
+	$("#showRegisterLayerBtn").on("click", function() {
+		showRegisterLayer();
+	});
 	//这里使用bootstrapValidator
 		var validator_register = $("#register-from").bootstrapValidator({
 			message : 'This value is not valid',
@@ -110,7 +112,7 @@ $(function() {
 				}
 			}
 		});
-		$(".a_register").on("click", function() {
+		function showRegisterLayer() {
 			layer.closeAll('page');
 			layer.open({
 				type : 1, //Page层类型
@@ -129,7 +131,7 @@ $(function() {
 					$("#register-from").data('bootstrapValidator').resetForm(true); //重置表单
 				}
 			});
-		});
+		}
 		var countdown=60;
 		//60秒到计时
 		function settime(obj) {

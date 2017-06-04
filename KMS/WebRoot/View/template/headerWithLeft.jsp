@@ -53,7 +53,7 @@
 					class="icon-bar"></span><span class="icon-bar"></span><span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Bootstrap</a>
+			<a class="navbar-brand" href="/KMS">KMS</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -84,7 +84,7 @@
 						app.controller('userCtrl', function($scope, $http) {
 							$http({
 								method : 'GET',
-								url : 'http://localhost/SG/queryIdFormName.php?name=' + $('#username').text()
+								url : 'http://123.206.187.120/SG/queryIdFormName.php?name=' + $('#username').text()
 							}).then(function successCallback(response) {
 								$scope.href = '/KMS/Account/UserInfoCenter?UserRecID=' + response.data.userinfo[0].UserRecID;
 							}, function errorCallback(response) {

@@ -19,7 +19,7 @@
 
 		<!-- 用户退出的跳转页面 -->
 <security:logout invalidate-session="true" 
-   	  				    logout-success-url="/Account/Login"
+   	  				    logout-success-url="/"
 						logout-url="/Account/LogOut"/>
 		<!-- 会话管理，设置最多登录异常，error-if-maximum-exceeded = false为第二次登录就会使前一个登录失效 -->
 		<security:session-management>

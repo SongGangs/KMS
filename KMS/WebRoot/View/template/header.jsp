@@ -13,6 +13,9 @@
 <!--bootstrap库-->
 <link href="/KMS/CSS/bootstrap.min.css" rel="stylesheet" />
 <script src="/KMS/JS/bootstrap/bootstrap.min.js"></script>
+<!--layer库-->
+<link href="/KMS/CSS/layer/skin/default/layer.css" rel="stylesheet" />
+<script src="/KMS/CSS/layer/layer.js"></script>
 <!--angularJS库-->
 <script src="/KMS/JS/angular.min.js"></script>
 <!--[if lt IE 9]>
@@ -36,11 +39,26 @@
 <link href="/KMS/CSS/default.css" rel="stylesheet" type="text/css" />
 <!--主要写的js代码-->
 <script src="/KMS/JS/default.js" type="text/javascript"></script>
+<!--基于jQuery的cookie插件-->
+<script src="/KMS/JS/jquery.cookie.js" type="text/javascript"></script>
+<!--基于jQuery的表单验证-->
+<script src="/KMS/JS/jquery.validate.min.js" type="text/javascript"></script>
+<!--基于bootstrap的表单验证插件-->
+<script src="/KMS/JS/bootstrapValidator.min.js" type="text/javascript"></script>
+<!--主要写的login、register代码 -->
+<script src="/KMS/JS/account/login.js" type="text/javascript"></script>
+<script src="/KMS/JS/account/register.js" type="text/javascript"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle show pull-left"
+				data-target="sidebar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span><span class="icon-bar"></span><span
+					class="icon-bar"></span>
+			</button>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 				aria-controls="navbar">
@@ -48,9 +66,6 @@
 					class="icon-bar"></span><span class="icon-bar"></span><span
 					class="icon-bar"></span>
 			</button>
-			<!--                 隔位符 -->
-			<a class="navbar-brand" href="javascript:;"></a>
-			 <a class="navbar-brand" href="javascript:;"></a>
 			<a class="navbar-brand" href="/KMS">KMS</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
@@ -61,11 +76,27 @@
 				<li><a href="https://github.com/shihao316558512/bootstrap"
 					target="_blank"><i class="fa fa-download fa-fw"></i>&nbsp;原码下载</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right ">
 				<!-- 不具有 Admin,User的权限则显示登录链接-->
 				<security:authorize ifNotGranted="ROLE_USER,ROLE_ADMIN">
-					<li><a href="/KMS/Account/Login"><i
-							class="fa fa-user fa-fw"></i>&nbsp;Log In</a></li>
+					<li class="dropdown hidden-xs hidden-sm "><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href='/KMS/Account/Register'>注册</a></li>
+							<li class="divider"></li>
+							<li><a href='/KMS/Account/Login'>登陆</a></li>
+						</ul></li>
+					<li class="dropdown hidden-md hidden-lg"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href='JavaScript:;' id='showRegisterLayerBtn' >注册</a></li>
+							<li class="divider"></li>
+							<li><a href='JavaScript:;' id='showLoginLayerBtn' >登陆</a></li>
+						</ul></li>
 				</security:authorize>
 				<!-- 如果已经授权则显示退出链接 -->
 				<security:authorize access="isAuthenticated()">
