@@ -34,9 +34,10 @@ public class FamilyServiceImp implements IFamilyService {
 	 * 
 	 * @see pers.sg.kms.services.IFamilyServices#getFamilyByFamilyName(long)
 	 */
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public Family getFamilyByFamilyName(String familyName) {
-		@SuppressWarnings("unchecked")
 		List<Family> list = FamilyDAO.findByFamilyName(familyName);
 		if (list.size() > 0) {
 			return list.get(0);

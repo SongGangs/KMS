@@ -102,7 +102,7 @@ public class AccountAjaxController {
 	@ResponseBody
 	@RequestMapping(value = "/UpdateUserInfo", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> UpdateUserInfo(String userName, String phoneNumber, short gender, String familyName,
-			long childinfoID) {
+			Long childinfoID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Userinfo userinfo = userServiceImp.getUserinfoByUserName(userName);
 		if (!userinfo.getPhoneNumber().contains(phoneNumber)) {

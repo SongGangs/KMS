@@ -7,6 +7,7 @@ $(function() {
 	var code = 0;//短信验证码
 	var status=false;//是否已发送
 	var familyName="";//家庭名字
+	var childinfoID=0;
 	$(document).on('click', '.delectaddress', function() {
 		var _this = $(this);
 		var _Addressid = $(this).data("id");
@@ -61,7 +62,7 @@ $(function() {
 				phoneNumber : $("#phoneNumber").val(),
 				gender : $("#gender").val(),
 				family : familyName,
-				childName:$("family").val()
+				childName:childinfoID
 			}, function(data) {
 				if (data.msg == "success") {
 					code = data.code;
@@ -84,38 +85,38 @@ $(function() {
 			});
 		}
 	});
-	
-	
-	$("#family").onblur(function() {
-		$.get("/KMS/API/ChildInfo/HasFamily", {
-			childinfoID : $(this).val()
-		}, function(data) {
-			if (data.msg == "success") {
-				familyName=data.familyName;
-			} else {
-				//默认prompt
-				layer.prompt(function(val, index) {
-					$.get("/KMS/API/Family/IsExist", {
-						familyName : val
-					}, function(data) {
-						if (data.msg == "success") {
-							familyName = val;
-							toastr.options = {
-								"progressBar" : true
+	/*
+	 $("#family").blur(function(){
+		 $.post("/KMS/API/ChildInfo/HasFamily", {
+				childinfoID : $(this).val()
+			}, function(data) {
+				if (data.msg == "success") {
+					familyName=data.familyName;
+				} else {
+					//默认prompt
+					layer.prompt(function(val, index) {
+						$.post("/KMS/API/Family/IsExist", {
+							familyName : val
+						}, function(data) {
+							if (data.msg == "success") {
+								familyName = val;
+								toastr.options = {
+									"progressBar" : true
+								}
+								toastr.info('恭喜你，' + val + ' 这个名字可以使用！');
+								layer.close(index);
+							} else {
+								toastr.options = {
+									"progressBar" : true
+								}
+								toastr.info('这个Family名字已经存在！');
 							}
-							toastr.info('恭喜你，' + val + ' 这个名字可以使用！');
-							layer.close(index);
-						} else {
-							toastr.options = {
-								"progressBar" : true
-							}
-							toastr.info('这个Family名字已经存在！');
-						}
+						});
 					});
-				});
-			}
-		});
-	});
+				}
+			});
+		  });
+	 */
 	var countdown = 60;
 	//60秒到计时
 	function settime(obj) {
@@ -178,6 +179,31 @@ $(function() {
 		console.log('onDataRequestSuccess: ', result);
 	}).on('onSetSelectValue', function(e, keyword, data) {
 		console.log('onSetSelectValue: ', keyword, data);
+		if (data.FamilyName !=null) {
+			familyName=data.FamilyName;
+			childinfoID=data.ChildInfoID;
+		} else {
+			//默认prompt
+			layer.prompt(function(val, index) {
+				$.post("/KMS/API/Family/IsExist", {
+					familyName : val
+				}, function(data) {
+					if (data.msg == "success") {
+						familyName = val;
+						toastr.options = {
+							"progressBar" : true
+						}
+						toastr.info('恭喜你，' + val + ' 这个名字可以使用！');
+						layer.close(index);
+					} else {
+						toastr.options = {
+							"progressBar" : true
+						}
+						toastr.info('这个Family名字已经存在！');
+					}
+				});
+			});
+		}
 	}).on('onUnsetSelectValue', function() {
 		console.log("onUnsetSelectValue");
 	});

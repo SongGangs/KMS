@@ -13,8 +13,8 @@ public class Family implements java.io.Serializable {
 
 	private long familyId;
 	private String familyName;
-	private Set userinfos = new HashSet(0);
 	private Set childinfos = new HashSet(0);
+	private Set userinfos = new HashSet(0);
 
 	// Constructors
 
@@ -23,10 +23,10 @@ public class Family implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Family(String familyName, Set userinfos, Set childinfos) {
+	public Family(String familyName, Set childinfos, Set userinfos) {
 		this.familyName = familyName;
-		this.userinfos = userinfos;
 		this.childinfos = childinfos;
+		this.userinfos = userinfos;
 	}
 
 	// Property accessors
@@ -47,20 +47,20 @@ public class Family implements java.io.Serializable {
 		this.familyName = familyName;
 	}
 
-	public Set getUserinfos() {
-		return this.userinfos;
-	}
-
-	public void setUserinfos(Set userinfos) {
-		this.userinfos = userinfos;
-	}
-
 	public Set getChildinfos() {
 		return this.childinfos;
 	}
 
 	public void setChildinfos(Set childinfos) {
 		this.childinfos = childinfos;
+	}
+
+	public Set getUserinfos() {
+		return this.userinfos;
+	}
+
+	public void setUserinfos(Set userinfos) {
+		this.userinfos = userinfos;
 	}
 
 }

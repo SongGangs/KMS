@@ -13,17 +13,17 @@
         <property name="familyName" type="string">
             <column name="FamilyName" length="50" />
         </property>
-        <set name="userinfos" inverse="true">
-            <key>
-                <column name="FamilyID" />
-            </key>
-            <one-to-many class="pers.sg.kms.model.Userinfo" />
-        </set>
         <set name="childinfos" inverse="true">
             <key>
                 <column name="FamilyID" />
             </key>
             <one-to-many class="pers.sg.kms.model.Childinfo" />
+        </set>
+        <set name="userinfos" inverse="true">
+            <key>
+                <column name="FamilyID" />
+            </key>
+            <one-to-many class="pers.sg.kms.model.Userinfo" />
         </set>
     </class>
 </hibernate-mapping>

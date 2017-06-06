@@ -24,7 +24,7 @@ import pers.sg.kms.services.IFamilyService;
  * @date : 2017年6月6日下午7:04:06
  */
 @Controller
-@RequestMapping("/Famil")
+@RequestMapping("/Family")
 public class FamilyAjaxController {
 	@Autowired
 	private IFamilyService familyServiceImpl;

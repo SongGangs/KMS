@@ -37,7 +37,7 @@ public class ChildInfoAjaxController {
 	// 表示将请求返回以json的格式
 	@ResponseBody
 	@RequestMapping(value = "/HasFamily", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, Object> HasFamily(long childinfoID) {
+	public Map<String, Object> HasFamily(Long childinfoID) {
 		Childinfo childinfo = childInfoServiceImpl.getChildinfoByChildInfoID(childinfoID);
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (childinfo.getFamily() == null) {
