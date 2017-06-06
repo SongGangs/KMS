@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pers.sg.kms.daos.DynamicinfoDAO;
 import pers.sg.kms.model.Dynamicinfo;
-import pers.sg.kms.services.IDynamicInfoServices;
+import pers.sg.kms.services.IDynamicInfoService;
 
 /**
  * @Title:DynamicServiceImp
@@ -20,7 +20,7 @@ import pers.sg.kms.services.IDynamicInfoServices;
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
 @Service
-public class DynamicInfoServiceImp implements IDynamicInfoServices {
+public class DynamicInfoServiceImp implements IDynamicInfoService {
 
 	@Autowired
 	private DynamicinfoDAO dynamicDao;

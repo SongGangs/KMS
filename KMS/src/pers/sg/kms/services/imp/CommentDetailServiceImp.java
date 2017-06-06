@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pers.sg.kms.daos.CommentdetailDAO;
 import pers.sg.kms.model.Commentdetail;
-import pers.sg.kms.services.ICommentDetailServices;
+import pers.sg.kms.services.ICommentDetailService;
 
 /**
  * @Title:CommentServiceImp
@@ -20,7 +20,7 @@ import pers.sg.kms.services.ICommentDetailServices;
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
 @Service
-public class CommentDetailServiceImp implements ICommentDetailServices {
+public class CommentDetailServiceImp implements ICommentDetailService {
 
 	@Autowired
 	private CommentdetailDAO CommentDAO;

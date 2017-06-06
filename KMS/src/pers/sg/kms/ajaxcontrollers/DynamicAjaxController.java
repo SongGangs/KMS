@@ -19,10 +19,10 @@ import pers.sg.kms.model.Dynamicinfo;
 import pers.sg.kms.model.Publishcomment;
 import pers.sg.kms.model.Publishdynamic;
 import pers.sg.kms.model.Userinfo;
-import pers.sg.kms.services.ICommentDetailServices;
-import pers.sg.kms.services.IDynamicInfoServices;
+import pers.sg.kms.services.ICommentDetailService;
+import pers.sg.kms.services.IDynamicInfoService;
 import pers.sg.kms.services.IPublishCommentService;
-import pers.sg.kms.services.IPublishDynamicServices;
+import pers.sg.kms.services.IPublishDynamicService;
 import pers.sg.kms.services.IUserInfoService;
 
 /**
@@ -37,13 +37,13 @@ import pers.sg.kms.services.IUserInfoService;
 public class DynamicAjaxController {
 
 	@Autowired
-	private IPublishDynamicServices publishDynamicServices;
+	private IPublishDynamicService publishDynamicServices;
 	@Autowired
 	private IUserInfoService userInfoService;
 	@Autowired
-	private IDynamicInfoServices dynamicServices;
+	private IDynamicInfoService dynamicServices;
 	@Autowired
-	private ICommentDetailServices commentServices;
+	private ICommentDetailService commentServices;
 	@Autowired
 	private IPublishCommentService publishCommentService;
 

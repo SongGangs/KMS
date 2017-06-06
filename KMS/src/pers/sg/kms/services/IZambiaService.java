@@ -14,6 +14,6 @@ import pers.sg.kms.model.Zambia;
  * @author : SGang
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
-public interface IZambiaServices {
+public interface IZambiaService {
 	List<Zambia> getZambiasByDynamicId(long id);
 }

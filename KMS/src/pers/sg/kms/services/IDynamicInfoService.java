@@ -15,7 +15,7 @@ import pers.sg.kms.model.Dynamicinfo;
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
 
-public interface IDynamicInfoServices {
+public interface IDynamicInfoService {
 	public Dynamicinfo getDynamicByDynamicId(long id);
 
 	public List<Dynamicinfo> getAllDynamic();

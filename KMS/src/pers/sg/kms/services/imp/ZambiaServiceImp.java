@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pers.sg.kms.daos.ZambiaDAO;
 import pers.sg.kms.model.Zambia;
-import pers.sg.kms.services.IZambiaServices;
+import pers.sg.kms.services.IZambiaService;
 
 /**
  * @Title:ZambiaServiceImp
@@ -20,7 +20,7 @@ import pers.sg.kms.services.IZambiaServices;
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
 @Service
-public class ZambiaServiceImp implements IZambiaServices {
+public class ZambiaServiceImp implements IZambiaService {
 
 	@Autowired
 	private ZambiaDAO ZambiaDAO;

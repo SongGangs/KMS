@@ -15,7 +15,7 @@ import pers.sg.kms.model.Userinfo;
  * @author : SGang
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
-public interface IPublishDynamicServices {
+public interface IPublishDynamicService {
 	public Userinfo getUserinfoByDynamicId(long id);
 
 	public List<Publishdynamic> getAllPublishdynamics();

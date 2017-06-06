@@ -22,7 +22,7 @@ public interface IUserInfoService {
 
 	public Userinfo getUserinfoByUserName(String username);
 
-	public boolean updateUserinfoByUserRecID(long UserRecID);
+	public void update(Userinfo userinfo);
 
 	public long getUserIdByDynamicId(long id);
 

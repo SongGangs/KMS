@@ -117,9 +117,8 @@ public class UserInfoServiceImp implements IUserInfoService {
 	 * pers.sg.kms.services.IUserInfoService#updateUserinfoByUserRecID(long)
 	 */
 	@Override
-	public boolean updateUserinfoByUserRecID(long UserRecID) {
-		// TODO Auto-generated method stub
-		return false;
+	public void update(Userinfo userinfo) {
+		userinfoDAO.attachDirty(userinfo);
 	}
 
 }

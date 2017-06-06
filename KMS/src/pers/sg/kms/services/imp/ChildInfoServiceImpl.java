@@ -56,9 +56,8 @@ public class ChildInfoServiceImpl implements IChildInfoService {
 	 * pers.sg.kms.services.IChildInfoService#updateChildinfoByChildInfoID(long)
 	 */
 	@Override
-	public Childinfo updateChildinfoByChildInfoID(long ChildInfoID) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Childinfo childinfo) {
+		childinfoDao.attachDirty(childinfo);
 	}
 
 }

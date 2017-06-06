@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import pers.sg.kms.daos.PublishdynamicDAO;
 import pers.sg.kms.model.Publishdynamic;
 import pers.sg.kms.model.Userinfo;
-import pers.sg.kms.services.IPublishDynamicServices;
+import pers.sg.kms.services.IPublishDynamicService;
 
 /**
  * @Title:PublishDynamicServiceImp
@@ -21,7 +21,7 @@ import pers.sg.kms.services.IPublishDynamicServices;
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
 @Service
-public class PublishDynamicServiceImp implements IPublishDynamicServices {
+public class PublishDynamicServiceImp implements IPublishDynamicService {
 
 	@Autowired
 	private PublishdynamicDAO PublishdynamicDAO;

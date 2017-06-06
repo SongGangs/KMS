@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import pers.sg.kms.model.Commentdetail;
 import pers.sg.kms.model.Publishcomment;
 import pers.sg.kms.model.Publishdynamic;
-import pers.sg.kms.services.ICommentDetailServices;
+import pers.sg.kms.services.ICommentDetailService;
 import pers.sg.kms.services.IPublishCommentService;
-import pers.sg.kms.services.IPublishDynamicServices;
-import pers.sg.kms.services.IZambiaServices;
+import pers.sg.kms.services.IPublishDynamicService;
+import pers.sg.kms.services.IZambiaService;
 import pers.sg.kms.viewmodel.DynamicIndexViewModel;
 import pers.sg.kms.viewmodel.SingleDynamicModel;
 
@@ -31,13 +31,13 @@ import pers.sg.kms.viewmodel.SingleDynamicModel;
 @Service
 public class DynamicIndexServiceImp {
 	@Autowired
-	private ICommentDetailServices CommentServiceImp;
+	private ICommentDetailService CommentServiceImp;
 	@Autowired
 	private IPublishCommentService publishCommentService;
 	@Autowired
-	private IZambiaServices ZambiaServiceImp;
+	private IZambiaService ZambiaServiceImp;
 	@Autowired
-	private IPublishDynamicServices publishDynamicServices;
+	private IPublishDynamicService publishDynamicServices;
 
 	public DynamicIndexViewModel getDynamicIndexViewModel() {
 		DynamicIndexViewModel model = new DynamicIndexViewModel();

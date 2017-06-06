@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +29,15 @@ public class FamilyDAO extends BaseHibernateDAO {
 	// property constants
 	public static final String FAMILY_NAME = "familyName";
 
-	public void save(Family transientInstance) {
+	public Family save(Family transientInstance) {
 		log.debug("saving Family instance");
 		try {
+			Transaction transaction = getSession().beginTransaction();
 			getSession().save(transientInstance);
+			transaction.commit();
 			log.debug("save successful");
+			getSession().close();
+			return transientInstance;
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;

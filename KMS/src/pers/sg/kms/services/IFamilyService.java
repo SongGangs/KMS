@@ -12,6 +12,10 @@ import pers.sg.kms.model.Family;
  * @author : SGang
  * @date : 2017Äê3ÔÂ19ÈÕ
  */
-public interface IFamilyServices {
+public interface IFamilyService {
 	public Family getFamilyByFamilyID(long familyId);
+
+	public Family getFamilyByFamilyName(String familyName);
+
+	public Family save(Family family);
 }

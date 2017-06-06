@@ -155,8 +155,11 @@ public class UserinfoDAO extends BaseHibernateDAO {
 	public void attachDirty(Userinfo instance) {
 		log.debug("attaching dirty Userinfo instance");
 		try {
+			Transaction transaction = getSession().beginTransaction();
 			getSession().saveOrUpdate(instance);
+			transaction.commit();
 			log.debug("attach successful");
+			getSession().close();
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
 			throw re;

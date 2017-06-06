@@ -4,7 +4,9 @@
  */
 
 $(function() {
-	var code = 0;
+	var code = 0;//短信验证码
+	var status=false;//是否已发送
+	var familyName="";//家庭名字
 	$(document).on('click', '.delectaddress', function() {
 		var _this = $(this);
 		var _Addressid = $(this).data("id");
@@ -53,11 +55,13 @@ $(function() {
 	});
 
 	$("#saveBtn").click(function() {
-		if (code == $("#identifyCode").val()) {
+		if ((status == true && code == $("#identifyCode").val()) || (status == false)) {
 			$.post("/KMS/API/Account/UpdateUserInfo", {
+				userName:$("username").val(),
 				phoneNumber : $("#phoneNumber").val(),
 				gender : $("#gender").val(),
-				family:$("#family").val()
+				family : familyName,
+				childName:$("family").val()
 			}, function(data) {
 				if (data.msg == "success") {
 					code = data.code;
@@ -65,7 +69,6 @@ $(function() {
 						"progressBar" : true
 					}
 					toastr.info('信息修改成功');
-
 					settime($("#querySecurityCodeBtn"));
 				} else {
 					toastr.options = {
@@ -80,7 +83,38 @@ $(function() {
 				time : 1000
 			});
 		}
-
+	});
+	
+	
+	$("#family").onblur(function() {
+		$.get("/KMS/API/ChildInfo/HasFamily", {
+			childinfoID : $(this).val()
+		}, function(data) {
+			if (data.msg == "success") {
+				familyName=data.familyName;
+			} else {
+				//默认prompt
+				layer.prompt(function(val, index) {
+					$.get("/KMS/API/Family/IsExist", {
+						familyName : val
+					}, function(data) {
+						if (data.msg == "success") {
+							familyName = val;
+							toastr.options = {
+								"progressBar" : true
+							}
+							toastr.info('恭喜你，' + val + ' 这个名字可以使用！');
+							layer.close(index);
+						} else {
+							toastr.options = {
+								"progressBar" : true
+							}
+							toastr.info('这个Family名字已经存在！');
+						}
+					});
+				});
+			}
+		});
 	});
 	var countdown = 60;
 	//60秒到计时

@@ -14,7 +14,7 @@ import pers.sg.kms.model.Commentdetail;
  * @author : SGang
  * @date : 2017Äê3ÔÂ29ÈÕ
  */
-public interface ICommentDetailServices {
+public interface ICommentDetailService {
 	public List<Commentdetail> getCommentsByDynamicId(long id);
 
 	// List<Comment>getComentsByIDAndNoYouId(long id);

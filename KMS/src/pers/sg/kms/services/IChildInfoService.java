@@ -19,5 +19,5 @@ public interface IChildInfoService {
 
 	public Childinfo getChildinfoByChildInfoID(long ChildInfoID);
 
-	public Childinfo updateChildinfoByChildInfoID(long ChildInfoID);
+	public void update(Childinfo childinfo);
 }
