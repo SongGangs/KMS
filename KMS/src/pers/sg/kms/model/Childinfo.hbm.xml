@@ -10,7 +10,7 @@
             <column name="ChildInfoID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="family" class="pers.sg.kms.model.Family" fetch="select">
+        <many-to-one name="family" class="pers.sg.kms.model.Family" fetch="select" lazy="false">
             <column name="FamilyID" />
         </many-to-one>
         <property name="childName" type="string">

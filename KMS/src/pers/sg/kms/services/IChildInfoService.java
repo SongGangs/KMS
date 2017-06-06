@@ -15,13 +15,9 @@ import pers.sg.kms.model.Childinfo;
  * @date : 2017Äê3ÔÂ14ÈÕ
  */
 public interface IChildInfoService {
-	public List<Childinfo> getChildinfoByFamilyID(int FamilyID);
+	public List<Childinfo> getChildinfoByFamilyID(long FamilyID);
 
-	public Childinfo getChildinfoByChildInfoID(int ChildInfoID);
+	public Childinfo getChildinfoByChildInfoID(long ChildInfoID);
 
-	public Childinfo delectChildinfoByChildInfoID(int ChildInfoID);
-
-	public Childinfo insertChildinfoByFamilyID(int FamilyID);
-
-	public Childinfo updateChildinfoByChildInfoID(int ChildInfoID);
+	public Childinfo updateChildinfoByChildInfoID(long ChildInfoID);
 }

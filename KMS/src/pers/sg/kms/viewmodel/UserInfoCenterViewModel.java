@@ -6,6 +6,7 @@ package pers.sg.kms.viewmodel;
 import java.util.List;
 
 import pers.sg.kms.model.Addressinfo;
+import pers.sg.kms.model.Childinfo;
 import pers.sg.kms.model.Userinfo;
 
 /**
@@ -19,14 +20,17 @@ public class UserInfoCenterViewModel {
 	private Userinfo userinfo;
 	private List<Userinfo> userinfolist;
 	private List<Addressinfo> addressinfos;
+	private List<Childinfo> childinfolist;
 
 	public UserInfoCenterViewModel() {
 	}
 
-	public UserInfoCenterViewModel(Userinfo user, List<Userinfo> list, List<Addressinfo> addressinfos) {
+	public UserInfoCenterViewModel(Userinfo user, List<Userinfo> list, List<Addressinfo> addressinfos,
+			List<Childinfo> childinfos) {
 		this.userinfo = user;
 		this.userinfolist = list;
 		this.addressinfos = addressinfos;
+		this.childinfolist = childinfos;
 	}
 
 	public Userinfo getUserinfo() {
@@ -58,6 +62,21 @@ public class UserInfoCenterViewModel {
 	 */
 	public void setAddressinfos(List<Addressinfo> addressinfos) {
 		this.addressinfos = addressinfos;
+	}
+
+	/**
+	 * @return the childinfolist
+	 */
+	public List<Childinfo> getChildinfolist() {
+		return childinfolist;
+	}
+
+	/**
+	 * @param childinfolist
+	 *            the childinfolist to set
+	 */
+	public void setChildinfolist(List<Childinfo> childinfolist) {
+		this.childinfolist = childinfolist;
 	}
 
 }

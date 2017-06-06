@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="favicon.ico" />
 <!--jQuery下拉列表插件bootstrap-select基本样式-->
-<link href="/KMS/CSS/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<link href="/KMS/CSS/bootstrap-select.min.css" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
 	<%@ include file="../template/headerWithLeft.jsp"%>
@@ -26,7 +27,7 @@
 					<dl>
 						<dt>下面是个人信息展示</dt>
 						<dd>
-							如需修改点击<strong><a>这里</a></strong>
+							如需修改点击<strong><a id="editlink" style="cursor: pointer;">这里</a></strong>
 						</dd>
 					</dl>
 
@@ -67,16 +68,39 @@
 						<div class="form-group">
 							<label for="gender" class="col-sm-2 control-label">用户性别</label>
 							<div class="col-sm-10">
-								<select class="selectpicker show-tick form-control" data-style="btn-info">
+								<select class="selectpicker show-tick form-control" id="gender"
+									data-style="btn-info">
 									<option value="-1">请选择</option>
-									<option value="0" <c:if test="${viewmodel.getUserinfo().getGender()=='0'}">selected = "selected"</c:if>>男</option>
-									<option value="1" <c:if test="${viewmodel.getUserinfo().getGender()=='1'}">selected = "selected"</c:if>>女</option>
-								</select> 
+									<option value="0"
+										<c:if test="${viewmodel.getUserinfo().getGender()=='0'}">selected = "selected"</c:if>>男</option>
+									<option value="1"
+										<c:if test="${viewmodel.getUserinfo().getGender()=='1'}">selected = "selected"</c:if>>女</option>
+								</select>
 								<!-- <input class="form-control" type="text" id="gender"
 									name="gender" 
 									value="<c:if test="${viewmodel.getUserinfo().getGender()=='1'}">女</c:if><c:if test="${viewmodel.getUserinfo().getGender()=='0'}">男</c:if>">  -->
 							</div>
 						</div>
+						<c:if test="${viewmodel.getUserinfolist().size()==0}">
+							<div class="form-group ">
+								<label for="family" class="col-sm-2 control-label">选择家庭</label>
+								<div class="col-sm-10">
+									<div class="input-group">
+										<input class="form-control" id="family" name="family"
+											type="text" placeholder="请输入你孩子的姓名">
+										<div class="input-group-btn">
+											<button type="button" class="btn btn-default dropdown-toggle"
+												data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu dropdown-menu-right" role="menu">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</c:if>
 						<div class="form-group ">
 							<label for="phoneNumber" class="col-sm-2 control-label">联系方式</label>
 							<div class="col-sm-10">
@@ -119,29 +143,45 @@
 								value="保存修改"> <input type="button"
 								class="btn  btn-danger" onclick="  " value="重置">
 						</div>
-						<fieldset>
-							<legend>家庭介绍</legend>
-							<table class="table">
-								<thead>
-									<tr>
-										<th>家庭识别码</th>
-										<th>家庭名称</th>
-										<th>家庭身份</th>
-										<th>姓名</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${viewmodel.getUserinfolist()}" var="item">
-										<tr style="{{$even?'background-color: #f1f1f1':''}}">
-											<td>${viewmodel.getUserinfo().getFamily().getFamilyId()}</td>
-											<td>${viewmodel.getUserinfo().getFamily().getFamilyName()}</td>
-											<td>${item.getIdentity()}</td>
-											<td>${item.getUserName()}</td>
+						<c:if test="${viewmodel.getUserinfolist().size()>0}">
+							<fieldset>
+								<legend>家庭介绍</legend>
+
+
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th>家庭识别码</th>
+											<th>家庭名称</th>
+											<th>家庭身份</th>
+											<th>姓名</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</fieldset>
+									</thead>
+									<tbody>
+										<c:forEach items="${viewmodel.getUserinfolist()}" var="item">
+											<tr style="{{$even?'background-color: #f1f1f1':''}}">
+												<td>${item.getFamily().getFamilyId()}</td>
+												<td>${item.getFamily().getFamilyName()}</td>
+												<td>${item.getIdentity()}</td>
+												<td>${item.getUserName()}</td>
+											</tr>
+										</c:forEach>
+										<c:forEach items="${viewmodel.getChildinfolist()}"
+											var="childitem">
+											<tr style="{{$even?'background-color: #f1f1f1':''}}">
+												<td>${childitem.getFamily().getFamilyId()}</td>
+												<td>${childitem.getFamily().getFamilyName()}</td>
+												<td>孩子</td>
+												<td>${childitem.getChildName()}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+
+							</fieldset>
+						</c:if>
+
 					</fieldset>
 				</div>
 			</div>
@@ -150,8 +190,12 @@
 	</div>
 	<%@ include file="../template/footer_tool.jsp"%>
 	<%@ include file="../template/footer.jsp"%>
+
 	<!--jQuery下拉列表插件bootstrap-select-->
-	<script src="/KMS/JS/bootstrap-select/bootstrap-select.js" type="text/javascript"></script>
+	<script src="/KMS/JS/bootstrap-select/bootstrap-select.js"
+		type="text/javascript"></script>
+	<!--bootstrap combox 搜索建议插件-->
+	<script src="/KMS/JS/bootstrap-suggest.min.js" type="text/javascript"></script>
 	<!--主要写的js代码关于Ajax的-->
 	<script src="/KMS/JS/account/userinfocenter.js" type="text/javascript"></script>
 </body>

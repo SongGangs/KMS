@@ -30,6 +30,9 @@
 <!--jquery.hammer手势插件-->
 <script src="/KMS/JS/jquery.hammer/hammer.min.js"></script>
 <script src="/KMS/JS/jquery.hammer/jquery.hammer.js"></script>
+<!--通知插件库jQuery.Toastr-->
+<link href="/KMS/CSS/jquery.toastr/toastr.min.css" rel="stylesheet" />
+<script src="/KMS/JS/jquery.toastr/toastr.min.js"></script>
 <!--平滑滚动到顶部库-->
 <script src="/KMS/JS/jquery.scrolltopcontrol/scrolltopcontrol.js"
 	type="text/javascript"></script>
@@ -49,7 +52,13 @@
 <script src="/KMS/JS/account/login.js" type="text/javascript"></script>
 <script src="/KMS/JS/account/register.js" type="text/javascript"></script>
 <!--并列一行的基本样式-->
-<link href="/KMS/CSS/common/inline.css" rel="stylesheet" type="text/css" />
+<style>
+ #register_identifyCode{width:57%;}
+ #querySecurityCodeBtn{float:right;}
+ .toast-top-right {
+	top: 62px;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -81,7 +90,7 @@
 			<ul class="nav navbar-nav navbar-right ">
 				<!-- 不具有 Admin,User的权限则显示登录链接-->
 				<security:authorize ifNotGranted="ROLE_USER,ROLE_ADMIN">
-					<li class="dropdown hidden-xs hidden-sm "><a href="#"
+					<li class="dropdown hidden-md hidden-lg"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
 						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
 							class="caret"></span></a>
@@ -90,14 +99,14 @@
 							<li class="divider"></li>
 							<li><a href='/KMS/Account/Login'>登陆</a></li>
 						</ul></li>
-					<li class="dropdown hidden-md hidden-lg"><a href="#"
+					<li class="dropdown hidden-xs hidden-sm "><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
 						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href='JavaScript:;' id='showRegisterLayerBtn' >注册</a></li>
+							<li><a href='JavaScript:;' id='showRegisterLayerBtn'>注册</a></li>
 							<li class="divider"></li>
-							<li><a href='JavaScript:;' id='showLoginLayerBtn' >登陆</a></li>
+							<li><a href='JavaScript:;' id='showLoginLayerBtn'>登陆</a></li>
 						</ul></li>
 				</security:authorize>
 				<!-- 如果已经授权则显示退出链接 -->

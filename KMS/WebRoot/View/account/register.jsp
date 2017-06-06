@@ -13,9 +13,13 @@
 <!-- 由于母版页中引入了那些JS及CSS文件 所以这里不需要再次引入
 但是JS文件应该放在最下面 important -->
 <!--登陆注册通用的基本样式-->
-<link href="/KMS/CSS/account/account.css" rel="stylesheet" type="text/css" />
+<link href="/KMS/CSS/account/account.css" rel="stylesheet"
+	type="text/css" />
 <!--并列一行的基本样式-->
 <link href="/KMS/CSS/common/inline.css" rel="stylesheet" type="text/css" />
+<!--jQuery下拉列表插件bootstrap-select基本样式-->
+<link href="/KMS/CSS/bootstrap-select.min.css" rel="stylesheet"
+	type="text/css" />
 </head>
 
 <body>
@@ -28,8 +32,9 @@
 			</ul>
 			<div class="col-sm-12 col-md-10">
 				<!--注册界面-->
-				<div id="register" >
-					<div class="well ">
+				<div id="register">
+					<div class="well " ng-app="registerApp"
+						ng-controller="registerCtrl">
 						<!-- class都是bootstrap定义好的样式，验证是根据input中的name值 -->
 						<form id="register-from" method="post" class="form-horizontal"
 							action="/KMS/Account/Register">
@@ -62,16 +67,25 @@
 									type="text" placeholder="请输入11位手机号码">
 							</div>
 							<div class="form-group input-group">
-
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-envelope"></i></span> <input
 									class=" form-control " id="register_identifyCode"
-									 name="identifyCode" type="text"
-									placeholder="请输入验证码"> <input type="button"
-									id="querySecurityCodeBtn" class="btn" 
+									name="identifyCode" type="text" placeholder="请输入验证码"> <input
+									type="button" id="querySecurityCodeBtn" class="btn"
 									value=" 获取验证码" />
 							</div>
-					<!--	宽度变化
+							<div class="form-group input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-th-list"></i></span> <select
+									class="selectpicker show-tick form-control"
+									data-style="btn-info" ng-model='UCselected'
+									ng-options='x.UserCatalogName for x in usercatalog'>
+								</select> <span id='UserCatalogselected'
+									ng-bind='UCselected.UserCatalogID' style='display: none'></span>
+							</div>
+							
+
+							<!--	宽度变化
 					<script type="text/javascript">
 							var precent=($('#querySecurityCodeBtn').width()+$('#querySecurityCodeBtn').prev().prev().width())
 							/$('#querySecurityCodeBtn').parent().width();
@@ -87,6 +101,20 @@
 							<a class="a_login" href="/KMS/Account/Login">已有账号？点我登录</a>
 						</form>
 					</div>
+					<script>
+						var app = angular.module('registerApp', []);
+						app.controller('registerCtrl', function($scope, $http) {
+							$http({
+								method : 'GET',
+								url : 'http://123.206.187.120/SG/queryUserCatalog.php'
+							}).then(function successCallback(response) {
+								$scope.usercatalog = response.data.usercatalog;
+							}, function errorCallback(response) {
+								$scope.usercatalog = '';
+							});
+						});
+						angular.bootstrap($('#well'), [ 'registerApp' ]);
+					</script>
 				</div>
 			</div>
 			<!--我是主要内容 end-->
@@ -94,11 +122,12 @@
 	</div>
 	<%@ include file="../template/footer_tool.jsp"%>
 	<%@ include file="../template/footer.jsp"%>
-	
-<!--基于bootstrap的表单验证插件-->
-<script src="/KMS/JS/bootstrapValidator.min.js" type="text/javascript"></script>
-
-<!--注册的js代码-->
-<script src="/KMS/JS/account/register.js" type="text/javascript"></script>
+	<!--jQuery下拉列表插件bootstrap-select-->
+	<script src="/KMS/JS/bootstrap-select/bootstrap-select.js"
+		type="text/javascript"></script>
+	<!--基于bootstrap的表单验证插件-->
+	<script src="/KMS/JS/bootstrapValidator.min.js" type="text/javascript"></script>
+	<!--注册的js代码-->
+	<script src="/KMS/JS/account/register.js" type="text/javascript"></script>
 </body>
 </html>

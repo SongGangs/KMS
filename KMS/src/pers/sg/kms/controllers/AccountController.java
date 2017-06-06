@@ -3,6 +3,7 @@
  */
 package pers.sg.kms.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import pers.sg.kms.model.Addressinfo;
+import pers.sg.kms.model.Childinfo;
 import pers.sg.kms.model.Userinfo;
 import pers.sg.kms.services.IAddressInfoService;
+import pers.sg.kms.services.IChildInfoService;
 import pers.sg.kms.services.IUserInfoService;
 import pers.sg.kms.viewmodel.UserInfoCenterViewModel;
 
@@ -38,6 +41,8 @@ public class AccountController {
 	private IUserInfoService userInfoService = null;// 自动装配一个空的用户
 	@Autowired
 	private IAddressInfoService addressInfoService = null;// 自动装配一个空的用户
+	@Autowired
+	private IChildInfoService childInfoService = null;// 自动装配一个空的用户
 
 	@RequestMapping("/Login")
 	public String login() {
@@ -63,8 +68,15 @@ public class AccountController {
 		ucvm.setUserinfo(userinfo);
 		ucvm.setAddressinfos(addressinfos);
 		// userinfo.getUsercatalog().getUserCatalogName()
-		List<Userinfo> userinfolist = userInfoService.getUserinfoByFamilyID(userinfo.getFamily().getFamilyId());
+		List<Userinfo> userinfolist = new ArrayList<Userinfo>();
+		List<Childinfo> childinfolist = new ArrayList<Childinfo>();
+		if (userinfo.getFamily() != null) {
+			userinfolist = userInfoService.getUserinfoByFamilyID(userinfo.getFamily().getFamilyId());
+			childinfolist = childInfoService.getChildinfoByFamilyID(userinfo.getFamily().getFamilyId());
+		}
+
 		ucvm.setUserinfolist(userinfolist);
+		ucvm.setChildinfolist(childinfolist);
 		return new ModelAndView("account/userinfocenter", "viewmodel", ucvm);
 	}
 

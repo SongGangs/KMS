@@ -30,6 +30,9 @@
 <!--jquery.hammer手势插件-->
 <script src="/KMS/JS/jquery.hammer/hammer.min.js"></script>
 <script src="/KMS/JS/jquery.hammer/jquery.hammer.js"></script>
+<!--通知插件库jQuery.Toastr-->
+<link href="/KMS/CSS/jquery.toastr/toastr.min.css" rel="stylesheet" />
+<script src="/KMS/JS/jquery.toastr/toastr.min.js"></script>
 <!--平滑滚动到顶部库-->
 <script src="/KMS/JS/jquery.scrolltopcontrol/scrolltopcontrol.js"
 	type="text/javascript"></script>
@@ -39,6 +42,11 @@
 <link href="/KMS/CSS/default.css" rel="stylesheet" type="text/css" />
 <!--主要写的js代码-->
 <script src="/KMS/JS/default.js" type="text/javascript"></script>
+<style>
+.toast-top-right {
+	top: 62px;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">

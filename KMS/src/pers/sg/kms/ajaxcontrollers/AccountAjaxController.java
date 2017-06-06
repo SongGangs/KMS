@@ -92,4 +92,14 @@ public class AccountAjaxController {
 			map.put("valid", true);
 		return map;
 	}
+
+	// 更新用户
+	@ResponseBody
+	@RequestMapping(value = "/UpdateUserInfo", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Boolean> UpdateUserInfo(String phoneNumber, short gender, String family) {
+
+		Map<String, Boolean> map = new HashMap<>();
+
+		return map;
+	}
 }

@@ -47,7 +47,7 @@
 	</div>
 	<!--注册界面-->
 	<div id="register" class="displayDiv">
-		<div class="well ">
+		<div class="well " ng-app="registerApp" ng-controller="registerCtrl">
 			<!-- class都是bootstrap定义好的样式，验证是根据input中的name值 -->
 			<form id="register-from" method="post" class="form-horizontal"
 				action="/KMS/Account/Register">
@@ -87,6 +87,16 @@
 						name="identifyCode" type="text" placeholder="请输入验证码"> <input
 						type="button" id="querySecurityCodeBtn" class="btn" value=" 获取验证码" />
 				</div>
+
+				<div class="form-group input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-th-list"></i></span> <select
+						class="selectpicker show-tick form-control" data-style="btn-info"
+						ng-model='UCselected'
+						ng-options='x.UserCatalogName for x in usercatalog'>
+					</select> <span id='UserCatalogselected' ng-bind='UCselected.UserCatalogID'
+						style='display: none'></span>
+				</div>
 				<!--	宽度变化
 					<script type="text/javascript">
 							var precent=($('#querySecurityCodeBtn').width()+$('#querySecurityCodeBtn').prev().prev().width())
@@ -103,6 +113,20 @@
 				<a class="a_login" href="/KMS/Account/Login">已有账号？点我登录</a>
 			</form>
 		</div>
+		<script>
+			var app = angular.module('registerApp', []);
+			app.controller('registerCtrl', function($scope, $http) {
+				$http({
+					method : 'GET',
+					url : 'http://123.206.187.120/SG/queryUserCatalog.php'
+				}).then(function successCallback(response) {
+					$scope.usercatalog = response.data.usercatalog;
+				}, function errorCallback(response) {
+					$scope.usercatalog = '';
+				});
+			});
+			angular.bootstrap($('#well'), [ 'registerApp' ]);
+		</script>
 	</div>
 
 </body>

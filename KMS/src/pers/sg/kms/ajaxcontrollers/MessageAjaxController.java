@@ -43,6 +43,7 @@ public class MessageAjaxController {
 			map.put("msg", "error");
 		} else {
 			map.put("msg", "success");
+			map.put("code", code);
 		}
 		return map;
 	}
