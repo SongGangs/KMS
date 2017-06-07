@@ -4,6 +4,12 @@
  */
 
 $(function() {
+	//加载层-默认风格
+	layer.load();
+	//此处演示关闭
+	setTimeout(function(){
+	  layer.closeAll('loading');
+	}, 2000);
 	code = 0; //短信验证码
 	status = false; //是否已发送
 	familyName = ""; //家庭名字

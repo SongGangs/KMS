@@ -69,6 +69,12 @@ $(function() {
 							time : 1000
 						});
 						layer.closeAll('page');
+						//加载层-默认风格
+						layer.load();
+						//此处演示关闭
+						setTimeout(function(){
+						  layer.closeAll('loading');
+						}, 2000);
 						//如果记住账户密码被选中 就将登录信息存到Cookie中
 						if ($("#login_rememberme").is(':checked')) {
 							CookieUserInfo();
