@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<%@ include file="View/template/header.jsp"%>
+	<%@ include file="View/template/header.jsp"%>
 	<div class="container-fluid all">
 		<%@ include file="View/template/left.jsp"%>
 		<div class="maincontent row">
@@ -20,7 +20,8 @@
 				<li class="active">首页</li>
 			</ul>
 			<div class="col-sm-12">
-				<div id="myCarousel" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 carousel slide  ">
+				<div id="myCarousel"
+					class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 carousel slide  ">
 					<!-- 轮播（Carousel）指标 -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -54,21 +55,22 @@
 						class="sr-only">Next</span>
 					</a>-->
 				</div>
-			<hr>
-			
+				<hr>
+
+
+				<%@ include file="View/template/footer.jsp"%>
 			</div>
 			<!--我是主要内容 end-->
 		</div>
 	</div>
 	<%@ include file="View/template/account.jsp"%>
-	<%@ include file="View/template/footer.jsp"%>
 	<script type="text/javascript">
-    $(function(){
-		// 初始化轮播
-		$("#myCarousel").carousel('cycle');
-		
+		$(function() {
+			// 初始化轮播
+			$("#myCarousel").carousel('cycle');
+	
 		});
-    </script>
+	</script>
 </body>
 </html>
 

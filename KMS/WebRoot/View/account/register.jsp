@@ -83,7 +83,7 @@
 								</select> <span id='UserCatalogselected'
 									ng-bind='UCselected.UserCatalogID' style='display: none'></span>
 							</div>
-							
+
 
 							<!--	宽度变化
 					<script type="text/javascript">
@@ -116,12 +116,13 @@
 						angular.bootstrap($('#well'), [ 'registerApp' ]);
 					</script>
 				</div>
+
+				<%@ include file="../template/footer.jsp"%>
 			</div>
 			<!--我是主要内容 end-->
 		</div>
 	</div>
 	<%@ include file="../template/footer_tool.jsp"%>
-	<%@ include file="../template/footer.jsp"%>
 	<!--jQuery下拉列表插件bootstrap-select-->
 	<script src="/KMS/JS/bootstrap-select/bootstrap-select.js"
 		type="text/javascript"></script>

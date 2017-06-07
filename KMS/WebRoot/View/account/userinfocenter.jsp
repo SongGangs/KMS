@@ -38,7 +38,8 @@
 								src="${viewmodel.getUserinfo().getImage()}" alt="用户头像"> <br>
 							<button class="btn" id="changeHeadImg">选择头像</button>
 							<!-- 给这个input 设置样式隐藏，切忌不可用display控制隐藏,可能不能跨浏览器 -->
-							<input type="file" id="file" accept="image/png,image/jpg,image/jpeg,image/gif,image/bmp"
+							<input type="file" id="file"
+								accept="image/png,image/jpg,image/jpeg,image/gif,image/bmp"
 								style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" />
 						</div>
 						<br>
@@ -187,12 +188,13 @@
 
 					</fieldset>
 				</div>
+
+				<%@ include file="../template/footer.jsp"%>
 			</div>
 			<!--我是主要内容 end-->
 		</div>
 	</div>
 	<%@ include file="../template/footer_tool.jsp"%>
-	<%@ include file="../template/footer.jsp"%>
 
 	<!--jQuery下拉列表插件bootstrap-select-->
 	<script src="/KMS/JS/bootstrap-select/bootstrap-select.js"
