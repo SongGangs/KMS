@@ -84,7 +84,9 @@ public class FamilyDAO extends BaseHibernateDAO {
 			String queryString = "from Family as model where model." + propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
-			return queryObject.list();
+			List results = queryObject.list();
+			getSession().close();
+			return results;
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
@@ -122,8 +124,11 @@ public class FamilyDAO extends BaseHibernateDAO {
 	public void attachDirty(Family instance) {
 		log.debug("attaching dirty Family instance");
 		try {
+			Transaction transaction = getSession().beginTransaction();
 			getSession().saveOrUpdate(instance);
+			transaction.commit();
 			log.debug("attach successful");
+			getSession().close();
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
 			throw re;

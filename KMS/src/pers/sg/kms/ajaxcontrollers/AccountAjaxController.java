@@ -104,6 +104,11 @@ public class AccountAjaxController {
 	public Map<String, Object> UpdateUserInfo(String userName, String phoneNumber, short gender, String familyName,
 			Long childinfoID) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		if (userName == "" || childinfoID == null || familyName == null) {
+			map.put("msg", "error");
+			return map;
+		}
+
 		Userinfo userinfo = userServiceImp.getUserinfoByUserName(userName);
 		if (!userinfo.getPhoneNumber().contains(phoneNumber)) {
 			userinfo.setPhoneNumber(phoneNumber);
@@ -119,6 +124,7 @@ public class AccountAjaxController {
 			childInfoServiceImpl.update(childinfo);
 		}
 		userinfo.setFamily(family);
+		userServiceImp.update(userinfo);
 		map.put("msg", "success");
 		return map;
 	}

@@ -45,8 +45,7 @@ public class ChildInfoServiceImpl implements IChildInfoService {
 	 */
 	@Override
 	public Childinfo getChildinfoByChildInfoID(long ChildInfoID) {
-		// TODO Auto-generated method stub
-		return null;
+		return childinfoDao.findById(ChildInfoID);
 	}
 
 	/*

@@ -36,7 +36,10 @@
 						<div class="text-center">
 							<img class="img-circle" style="width: 120px;height: 120px;"
 								src="${viewmodel.getUserinfo().getImage()}" alt="用户头像"> <br>
-							<button class="btn">选择头像</button>
+							<button class="btn" id="changeHeadImg">选择头像</button>
+							<!-- 给这个input 设置样式隐藏，切忌不可用display控制隐藏,可能不能跨浏览器 -->
+							<input type="file" id="file" accept="image/png,image/jpg,image/jpeg,image/gif,image/bmp"
+								style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" />
 						</div>
 						<br>
 						<div class="form-group">

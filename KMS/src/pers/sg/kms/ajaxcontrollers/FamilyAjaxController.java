@@ -39,12 +39,11 @@ public class FamilyAjaxController {
 	public Map<String, Object> HasFamily(String familyName) {
 		Family family = familyServiceImpl.getFamilyByFamilyName(familyName);
 		Map<String, Object> map = new HashMap<String, Object>();
-		if (family == null) {
+		if (family != null) {
 			map.put("msg", "error");
 			System.out.println("error");
 		} else {
 			map.put("msg", "success");
-			map.put("familyName", family.getFamilyName());
 			System.out.println("success");
 		}
 		return map;

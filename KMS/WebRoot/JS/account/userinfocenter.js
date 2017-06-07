@@ -4,10 +4,11 @@
  */
 
 $(function() {
-	var code = 0;//短信验证码
-	var status=false;//是否已发送
-	var familyName="";//家庭名字
-	var childinfoID=0;
+	code = 0; //短信验证码
+	status = false; //是否已发送
+	familyName = ""; //家庭名字
+	childinfoID = 0;
+	phoneNumber = $("#phoneNumber").val();
 	$(document).on('click', '.delectaddress', function() {
 		var _this = $(this);
 		var _Addressid = $(this).data("id");
@@ -56,13 +57,20 @@ $(function() {
 	});
 
 	$("#saveBtn").click(function() {
-		if ((status == true && code == $("#identifyCode").val()) || (status == false)) {
+		if ($("#gender").val() < 0) {
+			toastr.options = {
+				"progressBar" : true
+			}
+			toastr.info('请选择性别');
+			return;
+		}
+		if ((status == "true" && code == $("#identifyCode").val() && phoneNumber != $("#phoneNumber").val()) || (status == "false" && phoneNumber == $("#phoneNumber").val())) {
 			$.post("/KMS/API/Account/UpdateUserInfo", {
-				userName:$("username").val(),
+				userName : $("#username").text(),
 				phoneNumber : $("#phoneNumber").val(),
 				gender : $("#gender").val(),
-				family : familyName,
-				childName:childinfoID
+				familyName : familyName,
+				childinfoID : childinfoID
 			}, function(data) {
 				if (data.msg == "success") {
 					code = data.code;
@@ -140,6 +148,7 @@ $(function() {
 		}, function(data) {
 			if (data.msg == "success") {
 				code = data.code;
+				status = "true";
 				layer.msg('短信验证码已发送', {
 					icon : 1,
 					time : 1000
@@ -179,9 +188,9 @@ $(function() {
 		console.log('onDataRequestSuccess: ', result);
 	}).on('onSetSelectValue', function(e, keyword, data) {
 		console.log('onSetSelectValue: ', keyword, data);
-		if (data.FamilyName !=null) {
-			familyName=data.FamilyName;
-			childinfoID=data.ChildInfoID;
+		childinfoID = data.ChildInfoID;
+		if (data.FamilyName != null) {
+			familyName = data.FamilyName;
 		} else {
 			//默认prompt
 			layer.prompt(function(val, index) {
@@ -207,6 +216,21 @@ $(function() {
 	}).on('onUnsetSelectValue', function() {
 		console.log("onUnsetSelectValue");
 	});
-
-
+	$("#file").change(function () {
+		     var file = this.files[0];
+		     layer.msg('选择的文件是：'+file.name, {
+					icon : 1,
+					time : 5000
+				});
+		     toastr.options = {
+						"progressBar" : true
+					}
+		     toastr.info('后期更新，敬请期待');
+		 });
+	
+	//跟换头像
+	$("#changeHeadImg").click(function(){
+		//触发 文件选择的click事件  
+        $("#file").trigger("click");  
+	});
 });

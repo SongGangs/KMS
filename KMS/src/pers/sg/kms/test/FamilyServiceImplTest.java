@@ -14,11 +14,12 @@ import pers.sg.kms.model.Family;
 import pers.sg.kms.services.IFamilyService;
 
 /**
+ * 
  * @Title:FamilyServiceImplTest
  * @Description:
  * @Personal
  * @author : SGang
- * @date : 2017Äê6ÔÂ6ÈÕÏÂÎç10:07:46
+ * @date : 2017å¹´6æœˆ7æ—¥ä¸Šåˆ10:44:25
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
@@ -36,7 +37,7 @@ public class FamilyServiceImplTest {
 	public void testGetFamilyByFamilyID() {
 		Family family = familyServiceImpl.getFamilyByFamilyID(1);
 		System.out.println(family.getFamilyName());
-		Assert.assertEquals(family.getFamilyName(), "ĞÒ¸£Ö®¼Ò");
+		Assert.assertEquals(family.getFamilyName(), "å¹¸ç¦ä¹‹å®¶");
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class FamilyServiceImplTest {
 	 */
 	@Test
 	public void testGetFamilyByFamilyName() {
-		Family family = familyServiceImpl.getFamilyByFamilyName("ÎÒµÄ¼Ò");
+		Family family = familyServiceImpl.getFamilyByFamilyName("å¹¸ç¦ä¹‹å®¶");
 		Assert.assertNotNull(family);
 	}
 

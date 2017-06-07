@@ -13,7 +13,7 @@
 			access="hasRole('ROLE_USER')" />
 		<!-- 配置登录页面和登录成功页面 如果不配置将会使用Spring Security自带的页面 -->
 		<security:form-login login-page="/Account/Login"
-			authentication-failure-url="/Account/Login" default-target-url="/Account/UserInfoCenter?UserRecID=1"
+			authentication-failure-url="/Account/Login" default-target-url="/"
 			always-use-default-target="true" />
 		<!--我们自己配置登录成功的代理 所以这个属性不需要了default-target-url="/index" -->
 

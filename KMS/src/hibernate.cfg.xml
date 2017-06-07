@@ -9,9 +9,7 @@
 		<property name="myeclipse.connection.profile">
 			hibernateTest
 		</property>
-		<property name="connection.url">
-			jdbc:mysql://123.206.187.120:3306/kms
-		</property>
+		<property name="connection.url">jdbc:mysql://123.206.187.120:3306/kms?useUnicode=true&amp;characterEncoding=UTF-8</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">12345678</property>
 		<property name="connection.driver_class">
