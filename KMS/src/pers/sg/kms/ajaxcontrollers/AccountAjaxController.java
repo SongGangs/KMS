@@ -132,10 +132,10 @@ public class AccountAjaxController {
 	// 更新用户
 	@ResponseBody
 	@RequestMapping(value = "/ChangeHeadImg", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, Object> ChangeHeadImg(String userName, String imgSrc) {
+	public Map<String, Object> ChangeHeadImg(String userName, String imgType) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Userinfo userinfo = userServiceImp.getUserinfoByUserName(userName);
-		userinfo.setImage("/KMS/Upload/" + imgSrc);
+		userinfo.setImage("/KMS/Upload/" + userName + "." + imgType.toLowerCase());
 		userServiceImp.update(userinfo);
 		map.put("msg", "success");
 		return map;

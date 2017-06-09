@@ -262,7 +262,7 @@ $(function() {
 					//把图中的头像也更改了
 					$("#changeHeadImg").siblings("img").attr('src', pic);
 					//更新到数据库
-					ChangeHeaderImgSrc(userName, userName + "." + fname[1]);
+					ChangeHeaderImgSrc(userName,  fname[1]);
 				} else {
 					showToastr('上传失败');
 				}
@@ -272,7 +272,7 @@ $(function() {
 	//这是php将js传来的base64编码格式读取图片文件 解码存储
 	function uploadImg(pic, fname, fi, rootPath) {
 		var userName = $("#username").text();
-		$.post('http://localhost/SG/KMS/uploadImg.php',
+		$.post('http://123.206.187.120/SG/KMS/uploadImg.php',
 			{
 				message : pic,
 				filename : userName,
@@ -288,15 +288,17 @@ $(function() {
 					//把图中的头像也更改了
 					$("#changeHeadImg").siblings("img").attr('src', pic);
 					//更新到数据库
-					ChangeHeaderImgSrc(userName, userName + "." + fname[1]);
+					ChangeHeaderImgSrc(userName,  fname[1]);
 				}
 			});
 	}*/
-	function ChangeHeaderImgSrc(userName, imgSrc) {
+	//更新到数据库
+	function ChangeHeaderImgSrc(userName, imgType) {
 		$.post('/KMS/API/Account/ChangeHeadImg',
 			{
 				userName : userName,
-				imgSrc : imgSrc,
+				imgType : imgType,
+				
 			},
 			function(data) {
 				if (data.msg == "success") {

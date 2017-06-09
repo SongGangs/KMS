@@ -3,6 +3,7 @@
  */
 package pers.sg.kms.component;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,6 +42,13 @@ public class Base64ImageImpl implements IBase64Image {
 			for (int i = 0; i < bytes.length; ++i) {
 				if (bytes[i] < 0) {// 调整异常数据
 					bytes[i] += 256;
+				}
+			}
+			File file = new File(filePath);
+			// 如果文件路径所对应的文件存在，并且是一个文件，则直接删除
+			if (file.exists() && file.isFile()) {
+				if (!file.delete()) {
+					return false;
 				}
 			}
 			// 生成jpeg图片
