@@ -122,8 +122,20 @@ public class AccountAjaxController {
 			Childinfo childinfo = childInfoServiceImpl.getChildinfoByChildInfoID(childinfoID);
 			childinfo.setFamily(family);
 			childInfoServiceImpl.update(childinfo);
+			userinfo.setFamily(family);
 		}
-		userinfo.setFamily(family);
+		userServiceImp.update(userinfo);
+		map.put("msg", "success");
+		return map;
+	}
+
+	// 更新用户
+	@ResponseBody
+	@RequestMapping(value = "/ChangeHeadImg", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> ChangeHeadImg(String userName, String imgSrc) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Userinfo userinfo = userServiceImp.getUserinfoByUserName(userName);
+		userinfo.setImage("/KMS/Upload/" + imgSrc);
 		userServiceImp.update(userinfo);
 		map.put("msg", "success");
 		return map;

@@ -40,8 +40,18 @@
 							<!-- 给这个input 设置样式隐藏，切忌不可用display控制隐藏,可能不能跨浏览器 -->
 							<input type="file" id="file"
 								accept="image/png,image/jpg,image/jpeg,image/gif,image/bmp"
-								style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" />
+								style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"
+								data-rootPath="${viewmodel.getRootPath()}" />
 						</div>
+						<!--图片预览区 -->
+						<div id="image_thumb" style="display: none">
+							<div class="text-center">
+								<img id="image_thumb_img" class="img-circle"
+									style="width: 150px;height: 150px;" alt="用户头像">
+							</div>
+						</div>
+
+
 						<br>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">用户昵称</label>

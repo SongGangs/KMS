@@ -97,7 +97,7 @@
 						app.controller('userCtrl', function($scope, $http) {
 							$http({
 								method : 'GET',
-								url : 'http://123.206.187.120/SG/queryIdFormName.php?name=' + $('#username').text()
+								url : 'http://123.206.187.120/SG/KMS/queryIdFormName.php?name=' + $('#username').text()
 							}).then(function successCallback(response) {
 								$scope.href = '/KMS/Account/UserInfoCenter?UserRecID=' + response.data.userinfo[0].UserRecID;
 							}, function errorCallback(response) {

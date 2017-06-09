@@ -21,6 +21,7 @@ public class UserInfoCenterViewModel {
 	private List<Userinfo> userinfolist;
 	private List<Addressinfo> addressinfos;
 	private List<Childinfo> childinfolist;
+	private String rootPath;
 
 	public UserInfoCenterViewModel() {
 	}
@@ -77,6 +78,21 @@ public class UserInfoCenterViewModel {
 	 */
 	public void setChildinfolist(List<Childinfo> childinfolist) {
 		this.childinfolist = childinfolist;
+	}
+
+	/**
+	 * @return the rootPath
+	 */
+	public String getRootPath() {
+		return rootPath;
+	}
+
+	/**
+	 * @param rootPath
+	 *            the rootPath to set
+	 */
+	public void setRootPath(String rootPath) {
+		this.rootPath = rootPath;
 	}
 
 }

@@ -95,9 +95,9 @@
 						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href='/KMS/Account/Register'>注册</a></li>
-							<li class="divider"></li>
 							<li><a href='/KMS/Account/Login'>登陆</a></li>
+							<li class="divider"></li>
+							<li><a href='/KMS/Account/Register'>注册</a></li>
 						</ul></li>
 					<li class="dropdown hidden-xs hidden-sm "><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -128,7 +128,7 @@
 						app.controller('userCtrl', function($scope, $http) {
 							$http({
 								method : 'GET',
-								url : 'http://123.206.187.120/SG/queryIdFormName.php?name=' + $('#username').text()
+								url : 'http://123.206.187.120/SG/KMS/queryIdFormName.php?name=' + $('#username').text()
 							}).then(function successCallback(response) {
 								$scope.href = '/KMS/Account/UserInfoCenter?UserRecID=' + response.data.userinfo[0].UserRecID;
 							}, function errorCallback(response) {

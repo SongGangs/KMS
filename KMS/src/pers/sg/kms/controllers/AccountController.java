@@ -3,8 +3,11 @@
  */
 package pers.sg.kms.controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +64,8 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/UserInfoCenter")
-	public ModelAndView UserInfoCenter(long UserRecID) {
+	public ModelAndView UserInfoCenter(long UserRecID, HttpServletRequest request) {
+		String rootPath = request.getServletContext().getRealPath("") + "Upload" + File.separator;
 		UserInfoCenterViewModel ucvm = new UserInfoCenterViewModel();
 		Userinfo userinfo = userInfoService.getUserinfoByUserRecID(UserRecID);
 		List<Addressinfo> addressinfos = addressInfoService.getAdressByUserRecID(UserRecID);
@@ -74,9 +78,9 @@ public class AccountController {
 			userinfolist = userInfoService.getUserinfoByFamilyID(userinfo.getFamily().getFamilyId());
 			childinfolist = childInfoService.getChildinfoByFamilyID(userinfo.getFamily().getFamilyId());
 		}
-
 		ucvm.setUserinfolist(userinfolist);
 		ucvm.setChildinfolist(childinfolist);
+		ucvm.setRootPath(rootPath);
 		return new ModelAndView("account/userinfocenter", "viewmodel", ucvm);
 	}
 

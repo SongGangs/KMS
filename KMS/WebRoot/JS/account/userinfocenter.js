@@ -7,8 +7,8 @@ $(function() {
 	//加载层-默认风格
 	layer.load();
 	//此处演示关闭
-	setTimeout(function(){
-	  layer.closeAll('loading');
+	setTimeout(function() {
+		layer.closeAll('loading');
 	}, 2000);
 	code = 0; //短信验证码
 	status = false; //是否已发送
@@ -26,8 +26,9 @@ $(function() {
 					if (data.msg == "success") {
 						_this.prev().remove();
 						_this.remove();
-					} else if (data.msg == "error") {
-						alert("error");
+						showToastr('地址删除成功。');
+					} else {
+						showToastr('地址删除失败。');
 					}
 				});
 		}
@@ -45,8 +46,9 @@ $(function() {
 					if (data.msg == "success") {
 						var id = data.id;
 						var address = data.name;
-						var html = "<input type='text' class='useraddress' name='useraddress' value='{address}' />" +
-							"<a href='#' data-id='{id}' class='delectaddress'>删除</a>"
+						var html = "<div class='form-inline'><input type='text' class='form-control' " +
+								"name='useraddress' value='{address}' disabled /> " +
+								"<a href='#' data-id='{id}' class='delectaddress'>删除</a></div>"
 						var result = html.format({
 							address : address,
 							id : id
@@ -54,8 +56,9 @@ $(function() {
 
 						_this.prev().val("");
 						_this.prev().before(result);
-					} else if (data.msg == "error") {
-						alert("error");
+						showToastr('地址添加成功。');
+					} else  {
+						showToastr('地址添加失败。');
 					}
 
 				});
@@ -64,10 +67,7 @@ $(function() {
 
 	$("#saveBtn").click(function() {
 		if ($("#gender").val() < 0) {
-			toastr.options = {
-				"progressBar" : true
-			}
-			toastr.info('请选择性别');
+			showToastr('请选择性别');
 			return;
 		}
 		if ((status == "true" && code == $("#identifyCode").val() && phoneNumber != $("#phoneNumber").val()) || (status == "false" && phoneNumber == $("#phoneNumber").val())) {
@@ -80,16 +80,10 @@ $(function() {
 			}, function(data) {
 				if (data.msg == "success") {
 					code = data.code;
-					toastr.options = {
-						"progressBar" : true
-					}
-					toastr.info('信息修改成功');
+					showToastr('信息修改成功');
 					settime($("#querySecurityCodeBtn"));
 				} else {
-					toastr.options = {
-						"progressBar" : true
-					}
-					toastr.info('信息修改失败');
+					showToastr('信息修改失败');
 				}
 			});
 		} else {
@@ -170,10 +164,10 @@ $(function() {
 		$(this).prev().removeAttr("disabled");
 	});
 	/**
-     * 测试(首次从 URL 获取数据，显示 header，不显示按钮，忽略大小写，可清除)
-     */
+	 * 测试(首次从 URL 获取数据，显示 header，不显示按钮，忽略大小写，可清除)
+	 */
 	$("#family").bsSuggest({
-		url : "http://123.206.187.120/SG/queryChildInfoByName.php?name=" + $.trim($(this).val()),
+		url : "http://123.206.187.120/SG/KMS/queryChildInfoByName.php?name=" + $.trim($(this).val()),
 		/*effectiveFields: ["userName", "shortAccount"],
 		searchFields: [ "shortAccount"],*/
 		effectiveFieldsAlias : {
@@ -205,16 +199,10 @@ $(function() {
 				}, function(data) {
 					if (data.msg == "success") {
 						familyName = val;
-						toastr.options = {
-							"progressBar" : true
-						}
-						toastr.info('恭喜你，' + val + ' 这个名字可以使用！');
+						showToastr('恭喜你，' + val + ' 这个名字可以使用！');
 						layer.close(index);
 					} else {
-						toastr.options = {
-							"progressBar" : true
-						}
-						toastr.info('这个Family名字已经存在！');
+						showToastr('这个Family名字已经存在！');
 					}
 				});
 			});
@@ -222,21 +210,128 @@ $(function() {
 	}).on('onUnsetSelectValue', function() {
 		console.log("onUnsetSelectValue");
 	});
-	$("#file").change(function () {
-		     var file = this.files[0];
-		     layer.msg('选择的文件是：'+file.name, {
-					icon : 1,
-					time : 5000
-				});
-		     toastr.options = {
-						"progressBar" : true
-					}
-		     toastr.info('后期更新，敬请期待');
-		 });
-	
-	//跟换头像
-	$("#changeHeadImg").click(function(){
-		//触发 文件选择的click事件  
-        $("#file").trigger("click");  
+
+
+	$("#file").change(function() {
+		var rootPath = $(this).attr("data-rootPath").replace(/\\/g, '\\\\');
+		var filetype = [ 'jpg', 'jpeg', 'png', 'gif' ];
+		if (this.files[0]) {
+			fi = this.files[0]; //得到文件信息
+			//图片不得超过2M
+			if (fi.size > 2097152) {
+				showToastr('图片不得超过2M');
+				return;
+			}
+			//判断文件格式是否是图片 如果不是图片则返回false
+			var fname = fi.name.split('.');
+			if (filetype.indexOf(fname[1].toLowerCase()) == -1) {
+				showToastr('文件格式不支持');
+				return;
+			}
+
+			//实例化h5的fileReader
+			var fr = new FileReader();
+			fr.readAsDataURL(fi); //以base64编码格式读取图片文件
+			fr.onload = function(frev) {
+				pic = frev.target.result; //得到结果数据
+				//开始上传之前，预览图片
+				$('#image_thumb_img').attr('src', pic);
+				showLayer(pic, fname, fi, rootPath);
+			}
+		}
 	});
+
+	//跟换头像
+	$("#changeHeadImg").click(function() {
+		//触发 文件选择的click事件  
+		$("#file").trigger("click");
+	});
+	//使用ajax 利用post方式提交数据
+	//这是java将js传来的base64编码格式读取图片文件 解码存储
+	function uploadImg(pic, fname) {
+		var userName = $("#username").text();
+		$.post('/KMS/API/File/Upload',
+			{
+				message : pic,
+				filename : userName,
+				imgType : fname[1]
+			},
+			function(data) {
+				if (data.msg == "success") {
+					showToastr('上传成功');
+					//把图中的头像也更改了
+					$("#changeHeadImg").siblings("img").attr('src', pic);
+					//更新到数据库
+					ChangeHeaderImgSrc(userName, userName + "." + fname[1]);
+				} else {
+					showToastr('上传失败');
+				}
+			});
+	}
+	/*
+	//这是php将js传来的base64编码格式读取图片文件 解码存储
+	function uploadImg(pic, fname, fi, rootPath) {
+		var userName = $("#username").text();
+		$.post('http://localhost/SG/KMS/uploadImg.php',
+			{
+				message : pic,
+				filename : userName,
+				filetype : fname[1],
+				filesize : fi.size,
+				rootPath : rootPath
+			},
+			function(data) {
+				if (data.code == 1 || data.code == 2) {
+					showToastr('上传失败');
+				} else if (data.code == 0) {
+					showToastr('上传成功');
+					//把图中的头像也更改了
+					$("#changeHeadImg").siblings("img").attr('src', pic);
+					//更新到数据库
+					ChangeHeaderImgSrc(userName, userName + "." + fname[1]);
+				}
+			});
+	}*/
+	function ChangeHeaderImgSrc(userName, imgSrc) {
+		$.post('/KMS/API/Account/ChangeHeadImg',
+			{
+				userName : userName,
+				imgSrc : imgSrc,
+			},
+			function(data) {
+				if (data.msg == "success") {
+					showToastr("头像修改成功");
+				} else {
+					showToastr("头像修改失败");
+				}
+			});
+	}
+	//toastr信息展示
+	function showToastr(str) {
+		toastr.options = {
+			"progressBar" : true
+		}
+		toastr.info(str);
+	}
+	//展现layer
+	function showLayer(pic, fname, fi, rootPath) {
+		layer.closeAll('page');
+		layer.open({
+			type : 1, //Page层类型
+			// area: ['500px', '405px'],
+			//title : '头像预览',
+			//shade : 0.6, //遮罩透明度
+			anim : 1, //0-6的动画形式，-1不开启
+			shade : false,
+			title : false, //不显示标题
+			btn : [ '立即上传', '残忍拒绝' ],
+			offset : '100px',
+			btnAlign : 'c',
+			content : $("#image_thumb"),
+			yes : function() {
+				layer.closeAll('page');
+				uploadImg(pic, fname, fi, rootPath);
+			}
+		});
+	}
 });

@@ -106,7 +106,7 @@
 						app.controller('registerCtrl', function($scope, $http) {
 							$http({
 								method : 'GET',
-								url : 'http://123.206.187.120/SG/queryUserCatalog.php'
+								url : 'http://123.206.187.120/SG/KMS/queryUserCatalog.php'
 							}).then(function successCallback(response) {
 								$scope.usercatalog = response.data.usercatalog;
 							}, function errorCallback(response) {
