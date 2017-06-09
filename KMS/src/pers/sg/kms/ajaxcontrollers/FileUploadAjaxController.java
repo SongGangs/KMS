@@ -42,8 +42,8 @@ public class FileUploadAjaxController {
 	public Map<String, String> Upload(String message, String filename, String imgType, HttpServletRequest request) {
 		Map<String, String> map = new HashMap<>();
 		String filePath = request.getServletContext().getRealPath("") + "Upload" + File.separator + filename + "."
-				+ imgType;
-		if (!SaveFileImpl.GenerateImage(filePath, message, imgType)) {
+				+ imgType.toLowerCase();
+		if (!SaveFileImpl.GenerateImage(filePath, message, imgType.toLowerCase())) {
 			map.put("msg", "error");
 		} else {
 			map.put("msg", "success");
