@@ -104,9 +104,9 @@
 						aria-expanded="false"><i class="fa fa-user fa-fw"></i>&nbsp;未登录&nbsp;<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href='JavaScript:;' id='showRegisterLayerBtn'>注册</a></li>
-							<li class="divider"></li>
 							<li><a href='JavaScript:;' id='showLoginLayerBtn'>登陆</a></li>
+							<li class="divider"></li>
+							<li><a href='JavaScript:;' id='showRegisterLayerBtn'>注册</a></li>
 						</ul></li>
 				</security:authorize>
 				<!-- 如果已经授权则显示退出链接 -->

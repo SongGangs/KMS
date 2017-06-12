@@ -1,283 +1,333 @@
 * {
-    padding: 0px;
-    margin: 0px;
+	padding: 0px;
+	margin: 0px;
 }
-#center {
-    width: 920px;
-    /*height: 100%;*/
-    margin: 0 auto;
-    color: #c8e1fa;
-    background-color: #265380;
-    margin-top: 10px;
+
+#main {
+	width: 85%;
+	margin: 0 auto;
+	/*color: #c8e1fa;
+	background-color: #265380;*/
 }
-#top {
-    width: 920px;
-    /*height: 100%;*/
-    color: #c8e1fa;
-    background-color: #265380;
-    margin: 0 auto;
-    margin-top: 20px;
+
+.segregate {
+	height: 10px;
+	background-color: #ffffff;
 }
+
 #top-txt {
-     width: 920px;
-    height: 40px;
-    background-color:#225180;
-    
+	height: 40px;
+	background-color: #225180;
 }
+
 #top-txt textarea {
-    width: 885px;
-    height: 38px;
-    line-height: 19px;
-     background-color: #FFFFCC;
-    overflow: hidden;
+	height: 38px;
+	line-height: 19px;
+	background-color: #FFFFCC;
+	overflow: hidden;
 }
-#center-top-camera {
-    width: 30px;
-    height: 39px;
-    float: right;
-    border: solid #1f4266;
-    border-width: 0 0 1px 1px;
-    background-color:#225180;
-
-}
-#center-top-camera a:hover {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto;
-    margin-top: 8px;
-    background-image: url("/KMS/resources/untitled.png");
-    background-size: 632px 388px;
-    background-position: -192px -260px;
-    background-repeat: no-repeat;
-    display: block;
-    cursor: pointer;
-}
-#center-top-camera a {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto;
-    margin-top: 8px;
-    background-image: url("/KMS/resources/untitled.png");
-    background-size: 632px 388px;
-    background-position: -192px -286px;
-    background-repeat: no-repeat;
-    display: block;
+/*
+#top-txt span  {
+	width: 30px;
+	height: 39px;
+	float: right;
+	border: solid #1f4266;
+	border-width: 0 0 1px 1px;
+	background-color: #225180;
 }
 
+#top-txt span  a:hover {
+	width: 24px;
+	height: 24px;
+	margin: 0 auto;
+	margin-top: 8px;
+	background-image: url("/KMS/resources/untitled.png");
+	background-size: 632px 388px;
+	background-position: -192px -260px;
+	background-repeat: no-repeat;
+	display: block;
+	cursor: pointer;
+}
+
+#top-txt span  a {
+	width: 24px;
+	height: 24px;
+	margin: 0 auto;
+	margin-top: 8px;
+	background-image: url("/KMS/resources/untitled.png");
+	background-size: 632px 388px;
+	background-position: -192px -286px;
+	background-repeat: no-repeat;
+	display: block;
+}
+*/
 #center-top {
-    width: 900px;
-    height: 30px;
-    margin: 0 10px;
-    border-bottom: 2px solid #0000cd;
+	height: 40px;
+	margin: 0 10px;
+	border-bottom: 2px solid #0000cd;
 }
+
 #center-top span {
-    display: block;
-    float: left;
-    margin-left: 20px;
-    height: 28px;
-    width: 200px;
-    font-size: 25px;
-    color: #c8e1fa;
-    line-height: 28px;
-    margin-top: 1px;
+	display: block;
+	float: left;
+	margin-left: 20px;
+	height: 28px;
+	font-size: 25px;
+	color: #c8e1fa;
+	line-height: 28px;
+	margin-top: 6px;
 }
+
 #center-top a {
-    margin-top: 3px;
-    margin-right: 50px;
-    width: 24px;
-    height: 24px;
-    float: right;
-    background-image: url("/KMS/resources/untitled.png");
-    background-size: 632px 388px;
-    background-position: -582px -260px;
-    background-repeat: no-repeat;
-    display: block;
+	margin-top: 8px;
+	margin-right: 2%;
+	height: 24px;
+	float: right;
+	background-image: url("/KMS/resources/untitled.png");
+	background-size: 632px 388px;
+	background-position: -582px -260px;
+	background-repeat: no-repeat;
+	display: block;
+	width: 24px;
 }
+
 #center-top a:hover {
-    cursor: pointer;
-    background-image: url("/KMS/resources/untitled.png");
-    background-size: 632px 388px;
-    background-position: -582px -234px;
+	cursor: pointer;
+	background-image: url("/KMS/resources/untitled.png");
+	background-size: 632px 388px;
+	background-position: -582px -234px;
 }
+
 .center-itemlist {
-    width: 920px;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
+
 .center-item>div {
-    clear: both;
-    width: 900px;
-    margin: 0 10px;
+	clear: both;
+	margin: 0 10px;
 }
+
 .center-item>div:last-child {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
+
 .center-item>div:nth-last-child(2) {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
+
 .center-stop {
-    height: 20px;
-    width: 920px;
-    background-color: #ffffff;
+	height: 20px;
+	background-color: #ffffff;
 }
+
 .center-item-userinfo {
-    width: 900px;
-    height: 70px;
+	height: 70px;
 }
+
 .center-item-userinfo div {
-     float: left;
+	float: left;
 }
+
 .center-item-userinfo-img {
-    width: 80px;
-    height: 70px;
+	width: 80px;
+	height: 70px;
 }
+
 .center-item-userinfo-img img {
-    margin-left: 10px;
-    margin-top: 5px;
-    width: 60px;
-    height: 60px;
-    float: left;
-    background-repeat: no-repeat;
-    border-radius: 100%;
+	margin-left: 10px;
+	margin-top: 5px;
+	width: 60px;
+	height: 60px;
+	float: left;
+	background-repeat: no-repeat;
+	border-radius: 100%;
 }
-.center-item-userinfo-detail {
-     width: 300px;
-    height: 30px;
-    margin-left: 10px;
-    font-size: 20px;
-    line-height: 30px;
+
+@media ( min-width :1024px) {
+	.center-item-userinfo-detail {
+		width: 300px;
+		height: 30px;
+		margin-left: 10px;
+		line-height: 30px;
+	}
+	.center-item-userinfo-detail p:not(:first-child) {
+		margin-top: 0;
+		margin-bottom:0;
+		font-size: 16px;
+	}
+	.center-item-userinfo-detail p:first-child {
+		margin-top: 3px;
+		margin-bottom:3px;
+		font-size: 20px;
+	}
+	.center-item-ico ul li {
+		float: right;
+		margin-right: 50px;
+	}
+	.center-item-ico img {
+		width: 30px;
+		height: 30px;
+		background-repeat: no-repeat;
+		line-height: 30px;
+	}
+	.center-item-commentitem-main-userinfo-img img{
+		margin-left: 10px;
+	}
 }
-.center-item-userinfo-detail p {
-    margin-top: 3px;
+
+@media ( max-width :1023px) {
+	.center-item-userinfo-detail p:not(:first-child) {
+		margin-top: 0;
+		margin-bottom:0;
+		font-size: 13px;
+	}
+	.center-item-userinfo-detail p:first-child {
+		margin-top: 10px;
+		margin-bottom:6px;
+		font-size: 16px;
+	}
+	.center-item-ico ul li {
+		float: right;
+		margin-right: 15px;
+	}
+	.center-item-ico img {
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		line-height: 30px;
+	}
 }
 
 .center-item-ico {
-    clear: left;
-    height: 30px;
-    line-height: 30px;
-}
-.center-item-ico-likenum {
-    margin-left: 20px;
-    width: 200px;
-    float: left;
-}
-.center-item-ico-likenum span {
-    font-weight: bold;
-    color: #ff0000;
-}
-.center-item-ico ul {
-    float: right;
-    width: 200px;
-    height: 30px;
-    list-style: none;
-}
-.center-item-ico ul li {
-    float: right;
-    margin-right: 50px;
-    
-}
-hr {
-    margin: 5px 0;
-    background-color: #ffffff;
+	clear: left;
+	height: 30px;
+	line-height: 30px;
 }
 
-.center-item-ico img {
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    line-height: 30px;
+.center-item-ico-likenum {
+	margin-left: 20px;
+	float: left;
 }
+
+.center-item-ico-likenum span {
+	font-weight: bold;
+	color: #ff0000;
+}
+
+.center-item-ico ul {
+	float: right;
+	height: 30px;
+	list-style: none;
+}
+
+hr {
+	margin-top: 10px !important;
+	margin-bottom: 5px !important;
+	background-color: #ffffff;
+}
+
 .center-item-description {
-    font-size: 14px;
-    margin: 3px 0;
+	font-size: 14px;
+	margin: 3px 0;
 }
+
 .center-item-txt {
-    height: 20px;
+	height: 20px;
 }
+
 .center-item-txt textarea {
-    width: 100%;
-    height: 100%;
-    line-height: 20px;
-    font-size: 14px;
-    background-color: #D6D6FF;
-    overflow: hidden;
+	width: 100%;
+	height: 100%;
+	line-height: 20px;
+	font-size: 14px;
+	background-color: #D6D6FF;
+	overflow: hidden;
 }
+
 .center-item-btn {
-    display: none;
-    height: 30px;
+	display: none;
+	height: 30px;
 }
+
 .center-item-btn a {
-    height: 30px;
-    background-color: #00ced1;
-    width:60px;
-    font-size: 20px;
-    color: #ffe4e1;
-    border-radius: 10px;
-    float: right;
-    margin-right: 10px;
-    cursor: pointer;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    line-height: 30px;
+	height: 30px;
+	background-color: #00ced1;
+	width: 60px;
+	font-size: 20px;
+	color: #ffe4e1;
+	border-radius: 10px;
+	float: right;
+	margin-right: 10px;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	line-height: 30px;
 }
+
 .center-item-commentlist {
-     font-size: 12px;
-    width: 900px;
+	font-size: 12px;
 }
+
 .center-item-commentitem {
-    float: left;
-    clear: both;
-    margin-bottom: 5px;
+	float: left;
+	clear: both;
+	margin-bottom: 5px;
 }
+
 .center-item-commentlist p {
-    font-size: 12px;
+	font-size: 12px;
 }
-.center-item-commentitem-main {
-}
+
 .center-item-commentitem-main-userinfo-img {
-    float: left;
-    width: 50px;
+	float: left;
 }
+
 .center-item-commentitem-main-userinfo-img img {
-    margin-left: 10px;
-    width: 30px;
-    height: 30px;
-    float: left;
-    background-repeat: no-repeat;
-    border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	float: left;
+	background-repeat: no-repeat;
+	border-radius: 100%;
 }
+
 .center-item-commentitem-main-userinfo-detail {
-    float: left;
-    margin-left: 5px;
-    font-size: 14px;
+	float: left;
+	margin-left: 5px;
+	font-size: 14px;
 }
+
 .center-item-commentitem-main-userinfo-detail-message {
-    font-size: 12px;
+	font-size: 12px;
 }
+
 .center-item-commentitem-main-userinfo-detail-time span {
-    float: left;
+	float: left;
 }
+
 .center-item-commentitem-comment {
-    width: 15px;
-    height: 15px;
-    margin-left: 15px;
-    display: block;
-    margin-top: 1px;
-    float: left;
-    cursor: pointer;
+	width: 15px;
+	height: 15px;
+	margin-left: 15px;
+	display: block;
+	margin-top: 1px;
+	float: left;
+	cursor: pointer;
 }
+
 .center-item-commentitem-comment img {
-    display: none;
-     width: 15px;
-    height: 15px;
-    background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	background-repeat: no-repeat;
 }
+
 .center-item-commentitem-nomain {
-    /*margin-top: 5px;*/
-    clear: both;
-    float: left;
-    margin-left: 45px;
+	/*margin-top: 5px;*/
+	clear: both;
+	float: left;
+	margin-left: 45px;
 }
+
 .center-item-commentitem-main-userinfo-detail-message-name {
-    color: #00ffff;
+	color: #00ffff;
 }
