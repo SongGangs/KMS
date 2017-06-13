@@ -9,7 +9,7 @@
   <body>
     <div class="sidebar">
             <ul class="nav">
-                <li><a href="/KMS">首页</a></li>
+                <li><a href="/KMS/Home/Index">首页</a></li>
                 <li><a href="/KMS/Dynamic/Index">动态</a></li>
                 <li><a href="JavaScript:;">Message库</a></li>
                 <li><a href="JavaScript:;">UI库</a></li>
