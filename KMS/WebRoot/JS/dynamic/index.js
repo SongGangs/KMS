@@ -70,6 +70,7 @@ $(function() {
 	$(document).on('focus', '.center-item-txt textarea', function() {
 		$(this).parent().css("height", "40px");
 		$(this).parent().css("background-color", "#FFFFCC");
+		$(this).css("background-color", "#FFFFFF");
 		$(this).parent().next().slideDown(100);
 	//$(this).parent().next().show();
 	});
@@ -78,6 +79,7 @@ $(function() {
 		var e = $(this);
 		setTimeout(function() {
 			e.parent().removeAttr("style");
+			e.removeAttr("style");
 			e.parent().next().slideUp(100);
 		}, 100);
 	});

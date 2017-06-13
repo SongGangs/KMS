@@ -9,8 +9,8 @@
   <body>
     <div class="sidebar">
             <ul class="nav">
-                <li><a href="JavaScript:;">主页面</a></li>
-                <li><a href="JavaScript:;">Form库</a></li>
+                <li><a href="/KMS">首页</a></li>
+                <li><a href="/KMS/Dynamic/Index">动态</a></li>
                 <li><a href="JavaScript:;">Message库</a></li>
                 <li><a href="JavaScript:;">UI库</a></li>
                 <li><a href="JavaScript:;">Animate库</a></li>

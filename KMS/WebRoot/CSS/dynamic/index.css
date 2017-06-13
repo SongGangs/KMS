@@ -17,7 +17,6 @@
 
 #top-txt {
 	height: 40px;
-	background-color: #225180;
 }
 
 #top-txt textarea {
@@ -150,14 +149,14 @@
 		margin-left: 10px;
 		line-height: 30px;
 	}
-	.center-item-userinfo-detail p:not(:first-child) {
+	.center-item-userinfo-detail p:not (:first-child ) {
 		margin-top: 0;
-		margin-bottom:0;
+		margin-bottom: 0;
 		font-size: 16px;
 	}
 	.center-item-userinfo-detail p:first-child {
 		margin-top: 3px;
-		margin-bottom:3px;
+		margin-bottom: 3px;
 		font-size: 20px;
 	}
 	.center-item-ico ul li {
@@ -170,20 +169,23 @@
 		background-repeat: no-repeat;
 		line-height: 30px;
 	}
-	.center-item-commentitem-main-userinfo-img img{
+	.center-item-commentitem-main-userinfo-img img {
 		margin-left: 10px;
+	}
+	.center-item-commentitem-main-userinfo-detail {
+		margin-left: 45px !important;
 	}
 }
 
 @media ( max-width :1023px) {
-	.center-item-userinfo-detail p:not(:first-child) {
-		margin-top: 0;
-		margin-bottom:0;
+	.center-item-userinfo-detail p:not (:first-child ) {
+		margin-top: 0px;
+		margin-bottom: 0px;
 		font-size: 13px;
 	}
 	.center-item-userinfo-detail p:first-child {
 		margin-top: 10px;
-		margin-bottom:6px;
+		margin-bottom: 6px;
 		font-size: 16px;
 	}
 	.center-item-ico ul li {
@@ -196,6 +198,13 @@
 		background-repeat: no-repeat;
 		line-height: 30px;
 	}
+	.center-item-commentitem-comment img {
+		display: initial  !important;
+	}
+
+	/*.center-item-commentitem-main-userinfo-detail-time span {
+		margin-left: 35px;
+	}*/
 }
 
 .center-item-ico {
@@ -267,12 +276,14 @@ hr {
 
 .center-item-commentlist {
 	font-size: 12px;
+	width: 100%;
 }
 
 .center-item-commentitem {
 	float: left;
 	clear: both;
 	margin-bottom: 5px;
+	width: inherit;
 }
 
 .center-item-commentlist p {
@@ -281,6 +292,7 @@ hr {
 
 .center-item-commentitem-main-userinfo-img {
 	float: left;
+	position:absolute;
 }
 
 .center-item-commentitem-main-userinfo-img img {
@@ -289,11 +301,12 @@ hr {
 	float: left;
 	background-repeat: no-repeat;
 	border-radius: 100%;
+	margin-right: 5px;
 }
 
 .center-item-commentitem-main-userinfo-detail {
-	float: left;
-	margin-left: 5px;
+	/*float: left;*/
+	margin-left: 35px;
 	font-size: 14px;
 }
 
@@ -303,6 +316,7 @@ hr {
 
 .center-item-commentitem-main-userinfo-detail-time span {
 	float: left;
+	opacity:0.6;
 }
 
 .center-item-commentitem-comment {
@@ -319,6 +333,7 @@ hr {
 	width: 15px;
 	height: 15px;
 	background-repeat: no-repeat;
+	display:none;
 }
 
 .center-item-commentitem-nomain {
@@ -326,6 +341,7 @@ hr {
 	clear: both;
 	float: left;
 	margin-left: 45px;
+	width: inherit;
 }
 
 .center-item-commentitem-main-userinfo-detail-message-name {

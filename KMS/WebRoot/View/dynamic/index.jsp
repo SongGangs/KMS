@@ -88,8 +88,8 @@
 																class="center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-me">${commentmap.key.getUserinfoByUserRecId().getUserName()}</span><span>：</span>${commentmap.key.getContent()}
 														</div>
 														<p
-															class="center-item-commentitem-main-userinfo-detail-time visible-lg">
-															<span>${commentmap.key.getCommentDetailTime()}</span><a
+															class="center-item-commentitem-main-userinfo-detail-time ">
+															<span >${commentmap.key.getCommentDetailTime()}</span><a
 																class="center-item-commentitem-comment"
 																data-id="${commentmap.key.getPublishcomment().getPublishCommentId()}">
 																<img  src="/KMS/resources/comment.png" />
@@ -110,8 +110,8 @@
 																	class="center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-me">${comment.getUserinfoByUserRecId().getUserName()}</span>对<span
 																	class="center-item-commentitem-main-userinfo-detail-message-name center-item-commentitem-main-userinfo-messsage-you">${comment.getUserinfoByYouUserRecId().getUserName()}</span><span>说：</span>${comment.getContent()}
 															</div>
-															<p class="center-item-commentitem-main-userinfo-detail-time visible-lg">
-																<span>${comment.getCommentDetailTime()}</span><a
+															<p class="center-item-commentitem-main-userinfo-detail-time ">
+																<span >${comment.getCommentDetailTime()}</span><a
 																	data-id="${commentmap.key.getPublishcomment().getPublishCommentId()}"
 																	class="center-item-commentitem-comment"><img
 																	src="/KMS/resources/comment.png" /></a>
