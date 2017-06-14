@@ -12,7 +12,6 @@
 
 .segregate {
 	height: 10px;
-	background-color: #ffffff;
 }
 
 #top-txt {
@@ -276,7 +275,7 @@ hr {
 
 .center-item-commentlist {
 	font-size: 12px;
-	width: 100%;
+	width: inherit;
 }
 
 .center-item-commentitem {
