@@ -62,6 +62,24 @@ public class AccountAjaxController {
 	}
 
 	/*
+	 * 根据用户名查找用户信息
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/QueryImgSrcByName", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> QueryImgSrcByName(String userName) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Userinfo userinfo = userServiceImp.getUserinfoByUserName(userName);
+		if (userinfo != null) {
+			map.put("msg", "success");
+			map.put("imgSrc", userinfo.getImage());
+			System.out.println("success");
+		} else {
+			System.out.println("error");
+		}
+		return map;
+	}
+
+	/*
 	 * 注册用户
 	 */
 	@ResponseBody

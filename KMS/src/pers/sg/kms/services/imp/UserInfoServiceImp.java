@@ -51,9 +51,8 @@ public class UserInfoServiceImp implements IUserInfoService {
 		List<Userinfo> list = userinfoDAO.findByUserName(username);
 		if (list.size() > 0) {
 			return list.get(0);
-		} else {
-			return new Userinfo();
 		}
+		return null;
 	}
 
 	/*

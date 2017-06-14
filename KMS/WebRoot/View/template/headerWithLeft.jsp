@@ -83,7 +83,7 @@
 				<security:authorize access="isAuthenticated()">
 					<li ng-app="myApp" ng-controller="userCtrl" class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false" ><i
-							class="fa fa-user fa-fw"></i>&nbsp;<span id='username'><security:authentication property="principal.username"></security:authentication></span>&nbsp;<span class="caret"></span></a>
+							class="fa fa-user fa-fw"></i>&nbsp;<span id='me_username'><security:authentication property="principal.username"></security:authentication></span>&nbsp;<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href='{{href}}'>个人中心</a></li>
 							<li class="divider"></li>
@@ -95,7 +95,7 @@
 						app.controller('userCtrl', function($scope, $http) {
 							$http({
 								method : 'GET',
-								url : 'http://123.206.187.120/SG/KMS/queryIdFormName.php?name=' + $('#username').text()
+								url : 'http://123.206.187.120/SG/KMS/queryIdFormName.php?name=' + $('#me_username').text()
 							}).then(function successCallback(response) {
 								$scope.href = '/KMS/Account/UserInfoCenter?UserRecID=' + response.data.userinfo[0].UserRecID;
 							}, function errorCallback(response) {

@@ -47,8 +47,8 @@ $(function() {
 						var id = data.id;
 						var address = data.name;
 						var html = "<div class='form-inline'><input type='text' class='form-control' " +
-								"name='useraddress' value='{address}' disabled /> " +
-								"<a href='#' data-id='{id}' class='delectaddress'>删除</a></div>"
+							"name='useraddress' value='{address}' disabled /> " +
+							"<a href='#' data-id='{id}' class='delectaddress'>删除</a></div>"
 						var result = html.format({
 							address : address,
 							id : id
@@ -57,7 +57,7 @@ $(function() {
 						_this.prev().val("");
 						_this.prev().before(result);
 						showToastr('地址添加成功。');
-					} else  {
+					} else {
 						showToastr('地址添加失败。');
 					}
 
@@ -72,7 +72,7 @@ $(function() {
 		}
 		if ((status == "true" && code == $("#identifyCode").val() && phoneNumber != $("#phoneNumber").val()) || (status == "false" && phoneNumber == $("#phoneNumber").val())) {
 			$.post("/KMS/API/Account/UpdateUserInfo", {
-				userName : $("#username").text(),
+				userName : $("#username").val(),
 				phoneNumber : $("#phoneNumber").val(),
 				gender : $("#gender").val(),
 				familyName : familyName,
@@ -193,7 +193,10 @@ $(function() {
 			familyName = data.FamilyName;
 		} else {
 			//默认prompt
-			layer.prompt(function(val, index) {
+			layer.prompt({
+				title : '请设置你家庭的名字。',
+				offset : '100px'
+			}, function(val, index) {
 				$.post("/KMS/API/Family/IsExist", {
 					familyName : val
 				}, function(data) {
@@ -249,7 +252,7 @@ $(function() {
 	//使用ajax 利用post方式提交数据
 	//这是java将js传来的base64编码格式读取图片文件 解码存储
 	function uploadImg(pic, fname) {
-		var userName = $("#username").text();
+		var userName = $("#username").val();
 		$.post('/KMS/API/File/Upload',
 			{
 				message : pic,
@@ -262,7 +265,7 @@ $(function() {
 					//把图中的头像也更改了
 					$("#changeHeadImg").siblings("img").attr('src', pic);
 					//更新到数据库
-					ChangeHeaderImgSrc(userName,  fname[1]);
+					ChangeHeaderImgSrc(userName, fname[1]);
 				} else {
 					showToastr('上传失败');
 				}
@@ -298,7 +301,6 @@ $(function() {
 			{
 				userName : userName,
 				imgType : imgType,
-				
 			},
 			function(data) {
 				if (data.msg == "success") {
